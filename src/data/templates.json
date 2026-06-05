@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "slug": "cat",
+    "title": "Cute Cat",
+    "categoryId": "animals",
+    "tags": ["cat", "cute", "pet"],
+    "content": " /\\_/\\\n( o.o )\n > ^ <"
+  },
+  {
+    "id": "2",
+    "slug": "sword",
+    "title": "Retro Sword",
+    "categoryId": "gaming",
+    "tags": ["sword", "weapon", "rpg"],
+    "content": "      /| ________________\nO|===|* >________________>\n      \\|"
+  },
+  {
+    "id": "3",
+    "slug": "heart",
+    "title": "Heart",
+    "categoryId": "symbols",
+    "tags": ["love", "heart", "cute"],
+    "content": "  ***   ***\n ***** *****\n*************\n ***********\n  *********\n   *******\n    *****\n     ***\n      *"
+  },
+  {
+    "id": "4",
+    "slug": "dog",
+    "title": "Happy Dog",
+    "categoryId": "animals",
+    "tags": ["dog", "puppy", "pet"],
+    "content": "  __      _\no'')}____//\n `_/      )\n (_(_/-(_/"
+  },
+  {
+    "id": "5",
+    "slug": "shrug",
+    "title": "Shrug",
+    "categoryId": "funny",
+    "tags": ["shrug", "emoticon", "confused"],
+    "content": "¯\\_(ツ)_/¯"
+  },
+  {
+    "id": "6",
+    "slug": "coffee",
+    "title": "Coffee Cup",
+    "categoryId": "funny",
+    "tags": ["coffee", "drink", "morning"],
+    "content": "  (  )   (\n   ) (   )\n .........\n |       |]\n \\       /\n  `-----'"
+  },
+  {
+    "id": "7",
+    "slug": "space-invader",
+    "title": "Space Invader",
+    "categoryId": "retro",
+    "tags": ["alien", "game", "arcade"],
+    "content": "  x    x\n   xxxx\n xxxxxxxx\nxx x  x xx\nxxxxxxxxxx\nx  xxxx  x\nx x    x x\n   x  x"
+  },
+  {
+    "id": "8",
+    "slug": "music-note",
+    "title": "Music Note",
+    "categoryId": "symbols",
+    "tags": ["music", "note", "sound"],
+    "content": "   ♫\n  ♪\n ♫\n♪"
+  },
+  {
+    "id": "9",
+    "slug": "spider",
+    "title": "Spider",
+    "categoryId": "animals",
+    "tags": ["spider", "bug", "creepy"],
+    "content": " /\\  /\\\n/  \\/  \\\n|/\\/\\/\\|\n|  \\/  |\n\\      /\n \\/  \\/"
+  },
+  {
+    "id": "10",
+    "slug": "among-us",
+    "title": "Sus Crewmate",
+    "categoryId": "gaming",
+    "tags": ["among us", "game", "sus"],
+    "content": " ඞ"
+  }
+]
