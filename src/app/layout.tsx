@@ -19,6 +19,9 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "ASCII Art Generator | Create Stunning ASCII Instantly",
   description: "Turn text, images, and ideas into stunning ASCII art instantly. The fastest browser-based ASCII art platform.",
+  other: {
+    "google-adsense-account": "ca-pub-6393936268623951"
+  }
 };
 
 export default function RootLayout({
