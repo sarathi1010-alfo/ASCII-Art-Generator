@@ -1,10 +1,12 @@
 export default function TermsPage() {
+  const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
   return (
     <div className="container mx-auto py-12 px-4 max-w-3xl">
       <div className="mb-8">
         <h1 className="text-4xl font-bold tracking-tight mb-4">Terms of Service</h1>
         <p className="text-xl text-muted-foreground">
-          Last updated: October 2023
+          Last updated: {currentDate}
         </p>
       </div>
 
