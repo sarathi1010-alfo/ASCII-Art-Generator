@@ -11,10 +11,20 @@ export default function AboutPage() {
       </div>
 
       <div className="prose prose-neutral dark:prose-invert max-w-none">
-        <h2>Our Mission</h2>
+        <h2>Who Built This</h2>
         <p>
-          ASCII Gen was created to bring the nostalgic art of ASCII into the modern web.
-          Whether you need a quick text banner for a Readme file, a stylish piece of terminal art for your gaming profile, or a customized image conversion, our goal is to provide the best tools directly in your browser without the need for server-side processing or sign-ups.
+          This tool was built by the team at <strong>alfo.online</strong> as part of our mission to create fast, reliable, and privacy-respecting browser utilities. We believe in building software that just works—no signups, no paywalls, no server processing.
+        </p>
+
+        <h2>What It Does</h2>
+        <p>
+          ASCII Gen converts your text and images into beautiful, stylized text art (ASCII). It runs entirely in your browser using client-side processing, meaning it is blazingly fast and extremely secure. Your images and text are never sent to a server.
+        </p>
+
+        <h2>Why It Exists</h2>
+        <p>
+          ASCII Gen was created to bring the nostalgic art of ASCII into the modern web in the most accessible way possible.
+          Whether you need a quick text banner for a Readme file, a stylish piece of terminal art for your gaming profile, or a customized image conversion, our goal is to provide the best tools directly in your browser.
         </p>
 
         <h2>Features</h2>
