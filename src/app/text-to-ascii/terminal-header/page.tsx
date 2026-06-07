@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = constructMetadata({
   title: "Terminal ascii header | ASCII Art Generator",
   description: "Create amazing terminal ascii header using our free online Text To Ascii generator. Fast, secure, and runs entirely in your browser.",
-};
+  path: "/text-to-ascii/terminal-header",
+});
 
 export default function UseCasePage() {
   return (

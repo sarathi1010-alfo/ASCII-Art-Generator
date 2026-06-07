@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = constructMetadata({
   title: "Gaming ascii text | ASCII Art Generator",
   description: "Create amazing gaming ascii text using our free online Text To Ascii generator. Fast, secure, and runs entirely in your browser.",
-};
+  path: "/text-to-ascii/gaming-profile",
+});
 
 export default function UseCasePage() {
   return (

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = constructMetadata({
   title: "Ascii forum signature maker | ASCII Art Generator",
   description: "Create amazing ascii forum signature maker using our free online Image To Ascii generator. Fast, secure, and runs entirely in your browser.",
-};
+  path: "/image-to-ascii/forum-signature",
+});
 
 export default function UseCasePage() {
   return (

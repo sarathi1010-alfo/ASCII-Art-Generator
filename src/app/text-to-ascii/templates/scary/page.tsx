@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = constructMetadata({
   title: "Free Scary Templates | Text To Ascii",
   description: "Browse our collection of free Scary templates and use our Text To Ascii to customize them instantly.",
-};
+  path: "/text-to-ascii/templates/scary",
+});
 
 export default function TemplatePage() {
   return (

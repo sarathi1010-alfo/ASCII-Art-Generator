@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { constructMetadata, siteConfig } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,24 +19,8 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ASCII Art Generator | Create Stunning ASCII Instantly",
-  description: "Turn text, images, and ideas into stunning ASCII art instantly. The fastest browser-based ASCII art platform.",
+  ...constructMetadata(),
   keywords: ["ASCII art", "ASCII generator", "text to ASCII", "image to ASCII", "browser utility"],
-  alternates: {
-    canonical: "https://asciiartgenerator.com",
-  },
-  openGraph: {
-    title: "ASCII Art Generator | Create Stunning ASCII Instantly",
-    description: "Turn text, images, and ideas into stunning ASCII art instantly. The fastest browser-based ASCII art platform.",
-    url: "https://asciiartgenerator.com",
-    siteName: "ASCII Art Generator",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "ASCII Art Generator | Create Stunning ASCII Instantly",
-    description: "Turn text, images, and ideas into stunning ASCII art instantly. The fastest browser-based ASCII art platform.",
-  },
   other: {
     "google-adsense-account": "ca-pub-6393936268623951"
   }
@@ -49,9 +34,9 @@ export default function RootLayout({
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "ASCII Art Generator",
-    "url": "https://asciiartgenerator.com",
-    "description": "Turn text, images, and ideas into stunning ASCII art instantly. The fastest browser-based ASCII art platform.",
+    "name": siteConfig.name,
+    "url": siteConfig.url,
+    "description": siteConfig.description,
     "applicationCategory": "MultimediaApplication",
     "operatingSystem": "All"
   };

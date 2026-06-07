@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = constructMetadata({
   title: "Discord ascii pfp | ASCII Art Generator",
   description: "Create amazing discord ascii pfp using our free online Image To Ascii generator. Fast, secure, and runs entirely in your browser.",
-};
+  path: "/image-to-ascii/discord-pfp",
+});
 
 export default function UseCasePage() {
   return (

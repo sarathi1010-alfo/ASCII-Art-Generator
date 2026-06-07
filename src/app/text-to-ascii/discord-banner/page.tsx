@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = constructMetadata({
   title: "Discord ascii banner | ASCII Art Generator",
   description: "Create amazing discord ascii banner using our free online Text To Ascii generator. Fast, secure, and runs entirely in your browser.",
-};
+  path: "/text-to-ascii/discord-banner",
+});
 
 export default function UseCasePage() {
   return (

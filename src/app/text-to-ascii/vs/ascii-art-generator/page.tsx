@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = constructMetadata({
   title: "Text To Ascii vs Ascii Art Generator | Best Free Alternative",
   description: "Comparing Text To Ascii with Ascii Art Generator. Find out why our free, client-side browser utility is the better choice.",
-};
+  path: "/text-to-ascii/vs/ascii-art-generator",
+});
 
 export default function ComparisonPage() {
   return (

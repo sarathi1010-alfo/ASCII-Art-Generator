@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = constructMetadata({
   title: "Free Discord Templates | Image To Ascii",
   description: "Browse our collection of free Discord templates and use our Image To Ascii to customize them instantly.",
-};
+  path: "/image-to-ascii/templates/discord",
+});
 
 export default function TemplatePage() {
   return (

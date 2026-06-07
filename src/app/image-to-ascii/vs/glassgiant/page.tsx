@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = constructMetadata({
   title: "Image To Ascii vs Glassgiant | Best Free Alternative",
   description: "Comparing Image To Ascii with Glassgiant. Find out why our free, client-side browser utility is the better choice.",
-};
+  path: "/image-to-ascii/vs/glassgiant",
+});
 
 export default function ComparisonPage() {
   return (
