@@ -10,6 +10,9 @@ import { Copy, Download, Upload, Image as ImageIcon } from "lucide-react";
 import { useDropzone } from "react-dropzone";
 import { saveAs } from "file-saver";
 import { Switch } from "@/components/ui/switch";
+import { RelatedTools } from "@/components/widgets/related-tools";
+import { RecentTools } from "@/components/widgets/recent-tools";
+import { PopularTools } from "@/components/widgets/popular-tools";
 
 export default function ImageToAsciiPage() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -216,6 +219,17 @@ export default function ImageToAsciiPage() {
             </div>
           </Card>
         </div>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12 pt-12 border-t">
+        <div className="lg:col-span-2">
+          <RelatedTools />
+        </div>
+        <div className="lg:col-span-1">
+          <PopularTools />
+        </div>
+      </div>
+      <div className="mt-12">
+        <RecentTools />
       </div>
     </div>
   );

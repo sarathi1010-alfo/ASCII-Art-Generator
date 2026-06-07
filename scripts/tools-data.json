@@ -2,11 +2,15 @@
   {
     "tool": "text-to-ascii",
     "useCases": ["discord-banner", "github-readme", "terminal-header", "gaming-profile"],
-    "keywords": ["discord ascii banner", "github readme ascii art", "terminal ascii header", "gaming ascii text"]
+    "keywords": ["discord ascii banner", "github readme ascii art", "terminal ascii header", "gaming ascii text"],
+    "competitors": ["ascii-art-generator", "patorjk"],
+    "templates": ["cool", "scary", "retro"]
   },
   {
     "tool": "image-to-ascii",
     "useCases": ["photo-to-text", "discord-pfp", "retro-art", "forum-signature"],
-    "keywords": ["photo to ascii text", "discord ascii pfp", "retro ascii art generator", "ascii forum signature maker"]
+    "keywords": ["photo to ascii text", "discord ascii pfp", "retro ascii art generator", "ascii forum signature maker"],
+    "competitors": ["glassgiant", "asciiart-eu"],
+    "templates": ["discord", "terminal", "html"]
   }
 ]

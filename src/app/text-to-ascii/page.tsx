@@ -8,6 +8,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card } from "@/components/ui/card";
 import { Copy, Download } from "lucide-react";
 import { saveAs } from "file-saver";
+import { RelatedTools } from "@/components/widgets/related-tools";
+import { RecentTools } from "@/components/widgets/recent-tools";
+import { PopularTools } from "@/components/widgets/popular-tools";
 
 export default function TextToAsciiPage() {
   const [text, setText] = useState("ASCII Gen");
@@ -107,6 +110,17 @@ export default function TextToAsciiPage() {
             </div>
           </Card>
         </div>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12 pt-12 border-t">
+        <div className="lg:col-span-2">
+          <RelatedTools />
+        </div>
+        <div className="lg:col-span-1">
+          <PopularTools />
+        </div>
+      </div>
+      <div className="mt-12">
+        <RecentTools />
       </div>
     </div>
   );
