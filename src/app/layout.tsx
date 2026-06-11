@@ -22,7 +22,8 @@ export const metadata: Metadata = {
   ...constructMetadata(),
   keywords: ["ASCII art", "ASCII generator", "text to ASCII", "image to ASCII", "browser utility"],
   other: {
-    "google-adsense-account": "ca-pub-6393936268623951"
+    "google-adsense-account": "ca-pub-6393936268623951",
+    "monetag": "86950f5308b2a836fd804730ef0e5e7d"
   }
 };
 
