@@ -13,6 +13,20 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
+  const url = request.nextUrl;
+
+  // Force HTTPS if not on localhost and protocol is HTTP
+  // Forwarded protocol check added for platforms like Vercel
+  const forwardedProtocol = request.headers.get('x-forwarded-proto');
+
+  if (
+    !hostname.includes('localhost') &&
+    (url.protocol === 'http:' || forwardedProtocol === 'http')
+  ) {
+    url.protocol = 'https:';
+    return NextResponse.redirect(url, 301);
+  }
+
   return NextResponse.next();
 }
 
