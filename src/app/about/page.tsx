@@ -1,4 +1,12 @@
 import Link from "next/link";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildLandingMeta } from "@/lib/seo/metaFactories";
+
+export const metadata = resolveMetadata(buildLandingMeta({
+  title: "About ASCII Gen",
+  description: "Learn about the team behind the fastest, privacy-respecting browser utility for generating ASCII art.",
+  slug: "/about",
+}));
 
 export default function AboutPage() {
   return (

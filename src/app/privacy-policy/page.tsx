@@ -1,3 +1,12 @@
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildLandingMeta } from "@/lib/seo/metaFactories";
+
+export const metadata = resolveMetadata(buildLandingMeta({
+  title: "Privacy Policy",
+  description: "Learn about how ASCII Art Generator protects your privacy through 100% client-side processing.",
+  slug: "/privacy-policy",
+}));
+
 export default function PrivacyPage() {
   const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 

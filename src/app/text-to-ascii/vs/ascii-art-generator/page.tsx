@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { constructMetadata } from "@/lib/seo";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildProductMeta } from "@/lib/seo/metaFactories";
 
-export const metadata = constructMetadata({
+export const metadata = resolveMetadata(buildProductMeta({
   title: "Text To Ascii vs Ascii Art Generator | Best Free Alternative",
   description: "Comparing Text To Ascii with Ascii Art Generator. Find out why our free, client-side browser utility is the better choice.",
-  path: "/text-to-ascii/vs/ascii-art-generator",
-});
+  slug: "/text-to-ascii/vs/ascii-art-generator",
+}));
 
 export default function ComparisonPage() {
   return (

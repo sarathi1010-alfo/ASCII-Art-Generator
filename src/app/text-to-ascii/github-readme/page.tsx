@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { constructMetadata } from "@/lib/seo";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildProductMeta } from "@/lib/seo/metaFactories";
 
-export const metadata = constructMetadata({
+export const metadata = resolveMetadata(buildProductMeta({
   title: "Github readme ascii art | ASCII Art Generator",
   description: "Create amazing github readme ascii art using our free online Text To Ascii generator. Fast, secure, and runs entirely in your browser.",
-  path: "/text-to-ascii/github-readme",
-});
+  slug: "/text-to-ascii/github-readme",
+}));
 
 export default function UseCasePage() {
   return (

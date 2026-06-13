@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { constructMetadata } from "@/lib/seo";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildProductMeta } from "@/lib/seo/metaFactories";
 
-export const metadata = constructMetadata({
+export const metadata = resolveMetadata(buildProductMeta({
   title: "Free Retro Templates | Text To Ascii",
   description: "Browse our collection of free Retro templates and use our Text To Ascii to customize them instantly.",
-  path: "/text-to-ascii/templates/retro",
-});
+  slug: "/text-to-ascii/templates/retro",
+}));
 
 export default function TemplatePage() {
   return (

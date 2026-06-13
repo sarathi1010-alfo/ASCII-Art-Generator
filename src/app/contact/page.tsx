@@ -1,6 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildLandingMeta } from "@/lib/seo/metaFactories";
+
+export const metadata = resolveMetadata(buildLandingMeta({
+  title: "Contact Us",
+  description: "Get in touch with the team at ASCII Art Generator for support, questions, or feedback.",
+  slug: "/contact",
+}));
 
 export default function ContactPage() {
   return (

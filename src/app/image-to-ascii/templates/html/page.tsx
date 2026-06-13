@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { constructMetadata } from "@/lib/seo";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildProductMeta } from "@/lib/seo/metaFactories";
 
-export const metadata = constructMetadata({
+export const metadata = resolveMetadata(buildProductMeta({
   title: "Free Html Templates | Image To Ascii",
   description: "Browse our collection of free Html templates and use our Image To Ascii to customize them instantly.",
-  path: "/image-to-ascii/templates/html",
-});
+  slug: "/image-to-ascii/templates/html",
+}));
 
 export default function TemplatePage() {
   return (
