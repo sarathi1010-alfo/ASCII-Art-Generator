@@ -20,6 +20,8 @@ export default function ImageToAsciiPage() {
   const [isGenerating, setIsGenerating] = useState(false);
 
   // Options state
+  const [engine, setEngine] = useState<ImageAsciiOptions["engine"]>("standard");
+  const [theme, setTheme] = useState("default");
   const [densityKey, setDensityKey] = useState<keyof typeof DENSITY_SETS>("standard");
   const [invert, setInvert] = useState(false);
   const [brightness, setBrightness] = useState([100]);
@@ -57,6 +59,7 @@ export default function ImageToAsciiPage() {
       setIsGenerating(true);
       try {
         const options: ImageAsciiOptions = {
+          engine,
           density: DENSITY_SETS[densityKey],
           invert,
           brightness: deferredBrightness,
@@ -81,10 +84,61 @@ export default function ImageToAsciiPage() {
       isActive = false;
       clearTimeout(timeout);
     };
-  }, [imageUrl, densityKey, invert, deferredBrightness, deferredContrast, deferredScale]);
+  }, [imageUrl, engine, densityKey, invert, deferredBrightness, deferredContrast, deferredScale]);
 
-  const handleCopy = () => {
+  const handleCopy = useCallback(() => {
     if (asciiResult) {
+      // Strip ANSI escape codes when copying as standard text if the engine isn't ANSI
+      const textToCopy = engine === "ansi-color"
+        ? asciiResult.replace(/\x1b\[[0-9;]*m/g, '')
+        : asciiResult;
+      navigator.clipboard.writeText(textToCopy);
+    }
+  }, [asciiResult, engine]);
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore if typing in an input
+      if (document.activeElement?.tagName === "INPUT" || document.activeElement?.tagName === "TEXTAREA") {
+        return;
+      }
+
+      if (e.key === "c" || e.key === "C") {
+        e.preventDefault();
+        handleCopy();
+      } else if (e.key === "t" || e.key === "T") {
+        e.preventDefault();
+        const themes = ["default", "matrix", "amber", "cyberpunk"];
+        setTheme(prev => {
+          const currentIndex = themes.indexOf(prev);
+          return themes[(currentIndex + 1) % themes.length];
+        });
+      } else if (e.key === "e" || e.key === "E") {
+        e.preventDefault();
+        const engines: ImageAsciiOptions["engine"][] = ["standard", "braille", "ansi-color"];
+        setEngine(prev => {
+          const currentIndex = prev ? engines.indexOf(prev) : 0;
+          return engines[(currentIndex + 1) % engines.length];
+        });
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleCopy]);
+
+  const handleCopyDiscord = () => {
+    if (asciiResult) {
+      const textToCopy = engine === "ansi-color"
+        ? asciiResult.replace(/\x1b\[[0-9;]*m/g, '')
+        : asciiResult;
+      navigator.clipboard.writeText(`\`\`\`\n${textToCopy}\n\`\`\``);
+    }
+  };
+
+  const handleCopyANSI = () => {
+    if (asciiResult && engine === "ansi-color") {
       navigator.clipboard.writeText(asciiResult);
     }
   };
@@ -164,6 +218,35 @@ export default function ImageToAsciiPage() {
                   </div>
 
                   <div className="space-y-2 pt-2">
+                    <label className="text-sm font-medium block">Render Engine</label>
+                    <Select value={engine} onValueChange={(val) => setEngine(val as ImageAsciiOptions["engine"])}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="standard">Standard ASCII</SelectItem>
+                        <SelectItem value="braille">Braille Art</SelectItem>
+                        <SelectItem value="ansi-color">Colored ANSI</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2 pt-2">
+                    <label className="text-sm font-medium block">Theme</label>
+                    <Select value={theme} onValueChange={(val) => setTheme(val as string)}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="default">Default</SelectItem>
+                        <SelectItem value="matrix">Matrix Green</SelectItem>
+                        <SelectItem value="amber">Retro Amber</SelectItem>
+                        <SelectItem value="cyberpunk">Cyberpunk Neon</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2 pt-2">
                     <label className="text-sm font-medium block">Character Set</label>
                     <Select value={densityKey} onValueChange={(val) => setDensityKey(val as keyof typeof DENSITY_SETS)}>
                       <SelectTrigger>
@@ -174,6 +257,7 @@ export default function ImageToAsciiPage() {
                         <SelectItem value="complex">Complex (Detailed)</SelectItem>
                         <SelectItem value="blocks">Blocks (Shading)</SelectItem>
                         <SelectItem value="binary">Binary</SelectItem>
+                        <SelectItem value="matrix">Matrix</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -190,20 +274,30 @@ export default function ImageToAsciiPage() {
 
         <div className="lg:col-span-3">
           <Card className="flex flex-col h-full min-h-[500px] overflow-hidden">
-            <div className="border-b bg-muted/50 p-2 flex justify-between items-center">
+            <div className="border-b bg-muted/50 p-2 flex justify-between items-center flex-wrap gap-2">
               <span className="text-sm font-medium pl-2 text-muted-foreground">Result</span>
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-wrap">
+                {engine === "ansi-color" && (
+                  <Button variant="outline" size="sm" onClick={handleCopyANSI} disabled={!asciiResult}>
+                    <Copy className="h-4 w-4 mr-2" />
+                    Copy ANSI
+                  </Button>
+                )}
+                <Button variant="outline" size="sm" onClick={handleCopyDiscord} disabled={!asciiResult}>
+                  <Copy className="h-4 w-4 mr-2" />
+                  Discord
+                </Button>
                 <Button variant="outline" size="sm" onClick={handleCopy} disabled={!asciiResult}>
                   <Copy className="h-4 w-4 mr-2" />
-                  Copy
+                  Copy Text
                 </Button>
                 <Button variant="outline" size="sm" onClick={handleDownload} disabled={!asciiResult}>
                   <Download className="h-4 w-4 mr-2" />
-                  Download
+                  Save .txt
                 </Button>
               </div>
             </div>
-            <div className="flex-1 bg-black/5 dark:bg-black/40 p-4 overflow-auto flex items-center justify-center">
+            <div className="flex-1 bg-black p-4 overflow-auto flex items-center justify-center">
               {!imageUrl ? (
                 <div className="text-center text-muted-foreground flex flex-col items-center">
                   <ImageIcon className="h-12 w-12 mb-4 opacity-20" />
@@ -211,8 +305,27 @@ export default function ImageToAsciiPage() {
                 </div>
               ) : (
                 <div className={`transition-opacity duration-200 w-full h-full overflow-auto ${isGenerating ? "opacity-50" : "opacity-100"}`}>
-                   <pre className="font-mono text-[6px] sm:text-[8px] md:text-[10px] leading-[1] tracking-widest text-foreground text-center">
-                    {asciiResult}
+                  <pre
+                    className={`font-mono leading-[1] tracking-widest text-center ${
+                      engine === "braille" ? "text-[8px] sm:text-[10px] md:text-[12px]" : "text-[6px] sm:text-[8px] md:text-[10px]"
+                    } ${
+                      theme === 'matrix' ? 'text-green-500 text-shadow-glow-green' :
+                      theme === 'amber' ? 'text-amber-500 text-shadow-glow-amber' :
+                      theme === 'cyberpunk' ? 'text-fuchsia-500 text-shadow-glow-fuchsia' :
+                      'text-white'
+                    }`}
+                  >
+                    {engine === "ansi-color" && asciiResult ? (
+                      // Super simple ANSI color parsing for the preview
+                      <span dangerouslySetInnerHTML={{
+                        __html: asciiResult
+                          .replace(/</g, "&lt;")
+                          .replace(/>/g, "&gt;")
+                          .replace(/\x1b\[38;2;(\d+);(\d+);(\d+)m(.*?)\x1b\[0m/g, '<span style="color: rgb($1, $2, $3)">$4</span>')
+                      }} />
+                    ) : (
+                      asciiResult
+                    )}
                   </pre>
                 </div>
               )}
