@@ -6,8 +6,20 @@ import type { Metadata } from "next";
  * falls back to VERCEL_URL, and defaults to localhost for dev.
  */
 export const getBaseUrl = () => {
-  if (process.env.SITE_URL) return process.env.SITE_URL;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  if (process.env.SITE_URL) {
+    return process.env.SITE_URL.startsWith("http://")
+      ? process.env.SITE_URL.replace("http://", "https://")
+      : process.env.SITE_URL.startsWith("https://")
+      ? process.env.SITE_URL
+      : `https://${process.env.SITE_URL}`;
+  }
+  if (process.env.VERCEL_URL) {
+    return process.env.VERCEL_URL.startsWith("http://")
+      ? process.env.VERCEL_URL.replace("http://", "https://")
+      : process.env.VERCEL_URL.startsWith("https://")
+      ? process.env.VERCEL_URL
+      : `https://${process.env.VERCEL_URL}`;
+  }
   return "http://localhost:3000";
 };
 
