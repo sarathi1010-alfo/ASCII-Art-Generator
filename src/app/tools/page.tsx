@@ -28,10 +28,14 @@ const ECOSYSTEM_TOOLS = [
   }
 ];
 
-export const metadata = {
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildProductMeta } from "@/lib/seo/metaFactories";
+
+export const metadata = resolveMetadata(buildProductMeta({
   title: "All Free Tools | alfo.online Ecosystem Hub",
   description: "A directory of free, client-side browser utilities for design, productivity, and document management.",
-};
+  slug: "/tools",
+}));
 
 export default function ToolsHubPage() {
   return (

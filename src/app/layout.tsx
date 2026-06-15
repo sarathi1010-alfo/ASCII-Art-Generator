@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -6,7 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { constructMetadata, siteConfig } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
+import { buildOrganizationSchema, buildWebsiteSchema } from "@/lib/seo/buildSchema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,36 +18,20 @@ const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  ...constructMetadata(),
-  keywords: ["ASCII art", "ASCII generator", "text to ASCII", "image to ASCII", "browser utility"],
-  other: {
-    "google-adsense-account": "ca-pub-6393936268623951"
-  }
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": siteConfig.name,
-    "url": siteConfig.url,
-    "description": siteConfig.description,
-    "applicationCategory": "MultimediaApplication",
-    "operatingSystem": "All"
-  };
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+        <JsonLd schema={buildOrganizationSchema()} />
+        <JsonLd schema={buildWebsiteSchema()} />
+
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-HZQ3QT11QC" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`

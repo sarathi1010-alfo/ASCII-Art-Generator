@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { constructMetadata } from "@/lib/seo";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildProductMeta } from "@/lib/seo/metaFactories";
 
-export const metadata = constructMetadata({
+export const metadata = resolveMetadata(buildProductMeta({
   title: "Photo to ascii text | ASCII Art Generator",
   description: "Create amazing photo to ascii text using our free online Image To Ascii generator. Fast, secure, and runs entirely in your browser.",
-  path: "/image-to-ascii/photo-to-text",
-});
+  slug: "/image-to-ascii/photo-to-text",
+}));
 
 export default function UseCasePage() {
   return (

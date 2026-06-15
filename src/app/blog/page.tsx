@@ -3,8 +3,16 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildCategoryMeta } from "@/lib/seo/metaFactories";
 
 const POSTS_PATH = path.join(process.cwd(), "src/content/blog");
+
+export const metadata = resolveMetadata(buildCategoryMeta({
+  title: "Blog",
+  description: "Articles, tips, and the history behind ASCII art.",
+  slug: "/blog",
+}));
 
 export default function BlogIndexPage() {
   const postFilePaths = fs.readdirSync(POSTS_PATH).filter((path) => /\.mdx?$/.test(path));

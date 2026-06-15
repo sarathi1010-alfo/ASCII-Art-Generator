@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { constructMetadata } from "@/lib/seo";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildProductMeta } from "@/lib/seo/metaFactories";
 
-export const metadata = constructMetadata({
+export const metadata = resolveMetadata(buildProductMeta({
   title: "Retro ascii art generator | ASCII Art Generator",
   description: "Create amazing retro ascii art generator using our free online Image To Ascii generator. Fast, secure, and runs entirely in your browser.",
-  path: "/image-to-ascii/retro-art",
-});
+  slug: "/image-to-ascii/retro-art",
+}));
 
 export default function UseCasePage() {
   return (

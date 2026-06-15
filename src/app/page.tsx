@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Image as ImageIcon, Type, LayoutGrid } from "lucide-react";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildLandingMeta } from "@/lib/seo/metaFactories";
+
+export const metadata = resolveMetadata(buildLandingMeta({
+  title: "ASCII Art Generator | Turn Text & Images into Art",
+  description: "Turn text, images, and ideas into stunning ASCII art instantly. The fastest browser-based ASCII art platform.",
+  slug: "/",
+}), true);
 
 export default function Home() {
   return (

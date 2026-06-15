@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { constructMetadata } from "@/lib/seo";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildProductMeta } from "@/lib/seo/metaFactories";
 
-export const metadata = constructMetadata({
+export const metadata = resolveMetadata(buildProductMeta({
   title: "Terminal ascii header | ASCII Art Generator",
   description: "Create amazing terminal ascii header using our free online Text To Ascii generator. Fast, secure, and runs entirely in your browser.",
-  path: "/text-to-ascii/terminal-header",
-});
+  slug: "/text-to-ascii/terminal-header",
+}));
 
 export default function UseCasePage() {
   return (

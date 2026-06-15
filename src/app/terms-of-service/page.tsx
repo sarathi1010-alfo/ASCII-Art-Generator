@@ -1,3 +1,12 @@
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildLandingMeta } from "@/lib/seo/metaFactories";
+
+export const metadata = resolveMetadata(buildLandingMeta({
+  title: "Terms of Service",
+  description: "Terms and conditions for using the ASCII Art Generator service.",
+  slug: "/terms-of-service",
+}));
+
 export default function TermsPage() {
   const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
