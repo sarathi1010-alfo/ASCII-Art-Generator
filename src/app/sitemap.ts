@@ -54,7 +54,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return allRoutes.map((route) => {
     // Ensure route does not end with trailing slash unless it's strictly "/"
-    const cleanRoute = route !== '/' && route.endsWith('/') ? route.slice(0, -1) : route;
+    let cleanRoute = route !== '/' && route.endsWith('/') ? route.slice(0, -1) : route;
+    cleanRoute = cleanRoute.toLowerCase().replace(/\/+/g, '/');
 
     let changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' = 'weekly';
     let priority = 0.7;
