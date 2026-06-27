@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useDeferredValue } from "react";
+import { useState, useEffect, useDeferredValue, useRef } from "react";
 import { FONT_LIST, generateAsciiText } from "@/lib/ascii/text-generator";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,9 @@ import { saveAs } from "file-saver";
 import { RelatedTools } from "@/components/widgets/related-tools";
 import { RecentTools } from "@/components/widgets/recent-tools";
 import { PopularTools } from "@/components/widgets/popular-tools";
+import { useAsciiHistory, HistoryItem } from "@/lib/hooks/useAsciiHistory";
+import { HistorySidebar } from "@/components/widgets/history-sidebar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function TextToAsciiPage() {
   const [text, setText] = useState("ASCII Gen");
@@ -18,6 +21,8 @@ export default function TextToAsciiPage() {
   const [font, setFont] = useState(FONT_LIST[0]);
   const [asciiResult, setAsciiResult] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
+  const { addItem } = useAsciiHistory();
+  const lastGeneratedRef = useRef<string>("");
 
   useEffect(() => {
     async function updateAscii() {
@@ -25,6 +30,16 @@ export default function TextToAsciiPage() {
       try {
         const result = await generateAsciiText(deferredText, font);
         setAsciiResult(result);
+
+        if (result !== lastGeneratedRef.current && result.trim().length > 0 && deferredText.trim().length > 0) {
+          lastGeneratedRef.current = result;
+          addItem({
+             type: 'text',
+             data: deferredText,
+             resultPreview: result.split('\n').slice(0, 10).join('\n'),
+             options: { font, text: deferredText }
+          });
+        }
       } catch (err) {
         console.error("Error generating ASCII:", err);
       } finally {
@@ -34,10 +49,16 @@ export default function TextToAsciiPage() {
 
     const timeoutId = setTimeout(() => {
       updateAscii();
-    }, 100); // Small debounce
+    }, 500); // Debounce
 
     return () => clearTimeout(timeoutId);
-  }, [deferredText, font]);
+  }, [deferredText, font, addItem]);
+
+  const loadHistoryItem = (item: HistoryItem) => {
+    const opts = item.options;
+    if (opts.text) setText(opts.text);
+    if (opts.font) setFont(opts.font);
+  };
 
   const handleCopy = () => {
     if (asciiResult) {
@@ -50,6 +71,46 @@ export default function TextToAsciiPage() {
       const blob = new Blob([asciiResult], { type: "text/plain;charset=utf-8" });
       saveAs(blob, "ascii-art.txt");
     }
+  };
+
+  const handleExportHtml = () => {
+    if (!asciiResult) return;
+
+    const htmlContent = asciiResult.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    const htmlStr = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASCII Text Export</title>
+<style>
+  body { background: black; color: white; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: sans-serif; }
+  .container { position: relative; background: #111; padding: 20px; border-radius: 8px; border: 1px solid #333; max-width: 100%; overflow: auto; }
+  pre { font-family: monospace; line-height: 1.2; letter-spacing: normal; font-size: 14px; text-align: left; margin: 0; color: white; white-space: pre; }
+  button { position: absolute; top: 10px; right: 10px; background: #333; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+  button:hover { background: #444; }
+</style>
+</head>
+<body>
+<div class="container">
+  <button onclick="copyContent()">Copy</button>
+  <pre id="ascii-content">${htmlContent}</pre>
+</div>
+<script>
+  function copyContent() {
+    const content = document.getElementById('ascii-content');
+    let text = content.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Copied to clipboard!");
+    });
+  }
+</script>
+</body>
+</html>`;
+
+    const blob = new Blob([htmlStr], { type: "text/html;charset=utf-8" });
+    saveAs(blob, "ascii-text-export.html");
   };
 
   return (
@@ -89,26 +150,47 @@ export default function TextToAsciiPage() {
         </div>
 
         <div className="lg:col-span-2">
-          <Card className="flex flex-col h-full overflow-hidden">
-            <div className="border-b bg-muted/50 p-2 flex justify-between items-center">
-              <span className="text-sm font-medium pl-2 text-muted-foreground">Preview</span>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" onClick={handleCopy} disabled={!asciiResult}>
-                  <Copy className="h-4 w-4 mr-2" />
-                  Copy
-                </Button>
-                <Button variant="outline" size="sm" onClick={handleDownload} disabled={!asciiResult}>
-                  <Download className="h-4 w-4 mr-2" />
-                  Download
-                </Button>
-              </div>
+          <Tabs defaultValue="editor" className="flex flex-col h-full">
+            <div className="flex items-center justify-between mb-2">
+              <TabsList>
+                <TabsTrigger value="editor">Editor</TabsTrigger>
+                <TabsTrigger value="history">History</TabsTrigger>
+              </TabsList>
             </div>
-            <div className="flex-1 bg-black/5 dark:bg-black/40 p-4 overflow-auto min-h-[400px]">
-              <pre className="font-mono text-[10px] sm:text-xs md:text-sm leading-tight text-foreground whitespace-pre">
-                {isGenerating && !asciiResult ? "Generating..." : asciiResult}
-              </pre>
-            </div>
-          </Card>
+
+            <TabsContent value="editor" className="flex-1 m-0">
+              <Card className="flex flex-col h-full overflow-hidden">
+                <div className="border-b bg-muted/50 p-2 flex justify-between items-center">
+                  <span className="text-sm font-medium pl-2 text-muted-foreground">Preview</span>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm" onClick={handleCopy} disabled={!asciiResult}>
+                      <Copy className="h-4 w-4 mr-2" />
+                      Copy
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={handleDownload} disabled={!asciiResult}>
+                      <Download className="h-4 w-4 mr-2" />
+                      Download
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={handleExportHtml} disabled={!asciiResult}>
+                      <Download className="h-4 w-4 mr-2" />
+                      Export HTML
+                    </Button>
+                  </div>
+                </div>
+                <div className="flex-1 bg-black p-4 overflow-auto min-h-[400px] flex items-center justify-center">
+                  <pre className="font-mono text-[10px] sm:text-xs md:text-sm leading-tight text-white whitespace-pre">
+                    {isGenerating && !asciiResult ? "Generating..." : asciiResult}
+                  </pre>
+                </div>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="history" className="flex-1 m-0">
+              <Card className="h-full p-4 min-h-[400px]">
+                <HistorySidebar type="text" onLoadItem={loadHistoryItem} />
+              </Card>
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12 pt-12 border-t">

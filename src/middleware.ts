@@ -8,14 +8,11 @@ export function middleware(request: NextRequest) {
   // If the request is coming from a vercel.app domain, add a strict X-Robots-Tag
   // This prevents Google from indexing the Vercel staging/deployment URLs,
   // ensuring ONLY the custom domain (e.g., asciiartgenerator.com or sub.alfo.online) is indexed.
-  const url = request.nextUrl;
 
   const NOINDEX_PATTERNS = [
     /^\/api\//,
     /^\/admin\//,
   ];
-
-  const url = request.nextUrl;
 
   if (hostname.includes('vercel.app') || NOINDEX_PATTERNS.some(p => p.test(url.pathname))) {
     const response = NextResponse.next();
