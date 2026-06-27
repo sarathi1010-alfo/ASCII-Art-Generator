@@ -24,12 +24,14 @@ export function middleware(request: NextRequest) {
   // Forwarded protocol check added for platforms like Vercel
   const forwardedProtocol = request.headers.get('x-forwarded-proto');
 
+  const redirectUrl = request.nextUrl.clone();
+
   if (
     !hostname.includes('localhost') &&
-    (url.protocol === 'http:' || forwardedProtocol === 'http')
+    (forwardedProtocol === 'http')
   ) {
-    url.protocol = 'https:';
-    return NextResponse.redirect(url, 301);
+    redirectUrl.protocol = 'https:';
+    return NextResponse.redirect(redirectUrl, 308);
   }
 
   return NextResponse.next();
