@@ -29,13 +29,14 @@ toolsData.forEach((toolData) => {
 
     const pageContent = `import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { constructMetadata } from "@/lib/seo";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildProductMeta } from "@/lib/seo/metaFactories";
 
-export const metadata = constructMetadata({
+export const metadata = resolveMetadata(buildProductMeta({
   title: "${title}",
   description: "Create amazing ${keyword} using our free online ${toolName} generator. Fast, secure, and runs entirely in your browser.",
-  path: "/${toolSlug}/${useCase}",
-});
+  slug: "/${toolSlug}/${useCase}",
+}));
 
 export default function UseCasePage() {
   return (
@@ -112,13 +113,14 @@ export default function UseCasePage() {
 
     const pageContent = `import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { constructMetadata } from "@/lib/seo";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildProductMeta } from "@/lib/seo/metaFactories";
 
-export const metadata = constructMetadata({
+export const metadata = resolveMetadata(buildProductMeta({
   title: "${title}",
   description: "Comparing ${toolName} with ${compName}. Find out why our free, client-side browser utility is the better choice.",
-  path: "/${toolSlug}/vs/${competitor}",
-});
+  slug: "/${toolSlug}/vs/${competitor}",
+}));
 
 export default function ComparisonPage() {
   return (
@@ -177,13 +179,14 @@ export default function ComparisonPage() {
 
     const pageContent = `import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { constructMetadata } from "@/lib/seo";
+import { resolveMetadata } from "@/lib/seo/resolveMetadata";
+import { buildProductMeta } from "@/lib/seo/metaFactories";
 
-export const metadata = constructMetadata({
+export const metadata = resolveMetadata(buildProductMeta({
   title: "${title}",
   description: "Browse our collection of free ${tempName} templates and use our ${toolName} to customize them instantly.",
-  path: "/${toolSlug}/templates/${template}",
-});
+  slug: "/${toolSlug}/templates/${template}",
+}));
 
 export default function TemplatePage() {
   return (
