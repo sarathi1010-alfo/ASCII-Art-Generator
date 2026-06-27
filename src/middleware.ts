@@ -15,6 +15,8 @@ export function middleware(request: NextRequest) {
     /^\/admin\//,
   ];
 
+  const url = request.nextUrl;
+
   if (hostname.includes('vercel.app') || NOINDEX_PATTERNS.some(p => p.test(url.pathname))) {
     const response = NextResponse.next();
     response.headers.set('X-Robots-Tag', 'noindex, nofollow');
