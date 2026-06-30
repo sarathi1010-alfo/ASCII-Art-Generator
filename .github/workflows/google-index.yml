@@ -1,0 +1,16 @@
+name: Google Indexing Automation
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight UTC
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  google-indexing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Sitemap to Google Indexing API
+        uses: robingenz/action-google-indexing@v1.0.0
+        with:
+          siteUrl: 'https://asciiforge.alfo.online'   # No trailing slash
+          gcpServiceAccountKey: ${{ secrets.GCP_SA_KEY }}   
