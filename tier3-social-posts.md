@@ -1,0 +1,48 @@
+# Tier 3: Distribution Social Posts
+
+## Twitter / X
+
+**Post 1**
+Just published the ultimate guide on creating ASCII art! Whether you want to customize your terminal, spruce up your GitHub README, or just have fun, we've got you covered. 🎨✨ Check out our new guide: https://asciiforge.alfo.online/blog/how-to-create-ascii-art #ASCIIArt #WebDev #CreativeCoding
+
+**Post 2**
+Did you know you can turn any photo into detailed ASCII art directly in your browser? No server uploads, total privacy! 🔒 Learn the best practices for image-to-ASCII conversion in our latest guide: https://asciiforge.alfo.online/blog/how-to-create-ascii-art #PrivacyFirst #ASCII
+
+**Post 3**
+Looking to make your Discord messages pop? Wrap your ASCII art in triple backticks (\`\`\`) to preserve formatting! 👾 Learn more tips and tricks in "How to Create ASCII Art from Images and Text": https://asciiforge.alfo.online/blog/how-to-create-ascii-art #DiscordTips #GamingCommunity
+
+## LinkedIn
+
+**Post 4**
+A strong developer profile stands out. One of the easiest ways to add personality to your GitHub README is with a custom ASCII art banner. Our latest guide explores how to generate high-quality text art instantly without installing any software. Read the full guide here: https://asciiforge.alfo.online/blog/how-to-create-ascii-art #DeveloperTools #GitHub #PersonalBranding
+
+**Post 5**
+We just released a comprehensive guide detailing the evolution of ASCII art—from the early days of Bulletin Board Systems to modern browser-based generation algorithms. If you're interested in retro tech and modern client-side processing, give it a read! https://asciiforge.alfo.online/blog/how-to-create-ascii-art #TechHistory #WebDevelopment
+
+## Reddit (e.g., r/webdev, r/coolgithubprojects, r/ascii)
+
+**Post 6**
+*Title:* I wrote an Ultimate Guide on creating ASCII Art (and built a fast client-side generator to go with it)
+*Body:* Hey everyone, ASCII art is still one of my favorite ways to customize READMEs and terminal welcome screens. I put together a comprehensive guide on how it works, the difference between manual/automated creation, and best practices for converting images so they don't look like a garbled mess. You can read it here: https://asciiforge.alfo.online/blog/how-to-create-ascii-art. Would love to hear what fonts you all prefer!
+
+**Post 7**
+*Title:* Best practices for converting images to ASCII art? High contrast is key.
+*Body:* I've been experimenting a lot with image-to-ASCII conversion algorithms. The biggest takeaway? Cluttered backgrounds ruin the effect. Stick to high-contrast silhouettes or logos. I wrote a detailed breakdown of this and other tips in a new guide: https://asciiforge.alfo.online/blog/how-to-create-ascii-art.
+
+## Discord Communities
+
+**Post 8**
+Hey @everyone! We just dropped a huge guide on how to create the best ASCII art. If you've been wondering how to make those crazy text banners or convert your profile picture into text, check this out: https://asciiforge.alfo.online/blog/how-to-create-ascii-art 🚀
+
+**Post 9**
+*In a #resources or #tools channel:*
+New Guide: How to Create ASCII Art from Images and Text 📖
+Covers:
+- Best fonts (Standard, Doom, Ghost)
+- Image contrast/resolution tips
+- Preserving formatting on Discord
+Link: https://asciiforge.alfo.online/blog/how-to-create-ascii-art
+
+**Post 10**
+*In a #general chat:*
+Anyone else still use ASCII art for their terminal startup screens? I just read this guide and it inspired me to update my `.zshrc`. The Doom font looks incredible. Here's the guide if anyone wants to try it: https://asciiforge.alfo.online/blog/how-to-create-ascii-art

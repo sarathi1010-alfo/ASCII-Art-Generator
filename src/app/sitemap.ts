@@ -25,7 +25,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/terms-of-service',
     '/tools',
     '/gallery',
-    '/blog'
+    '/blog',
+    '/generators/text-to-ascii',
+    '/generators/image-to-ascii',
+    '/styles/standard',
+    '/styles/doom',
+    '/styles/ghost',
+    '/use-cases/discord-ascii-art',
+    '/use-cases/github-readme-ascii',
+    '/use-cases/terminal-ascii-art'
   ];
 
   // Tool routes generated from tools-data.json
