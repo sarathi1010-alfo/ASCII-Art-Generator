@@ -6,19 +6,23 @@ import { JsonLd } from "@/components/JsonLd";
 import { buildFaqSchema } from "@/lib/seo/buildSchema";
 
 export const metadata = resolveMetadata(buildProductMeta({
-  title: "Doom ASCII Style | Text Generator",
-  description: "Generate bold, massive text using the Doom ASCII font style. Perfect for aggressive headers.",
+  title: "Doom ASCII Style | Bold Text Generator",
+  description: "Generate massive, aggressive text using the Doom ASCII font style. Perfect for high-impact headers and gaming profiles.",
   slug: "/styles/doom",
 }));
 
 const faqItems = [
   {
     question: "What is the Doom ASCII style?",
-    answer: "The Doom style is a large, imposing FIGlet font characterized by bold, blocky letters and a slight 3D perspective, inspired by classic video games."
+    answer: "The Doom style is a large, imposing FIGlet font inspired by the typography of classic 90s video games. It features bold, blocky letters with a slight 3D perspective."
   },
   {
     question: "When should I use the Doom style?",
-    answer: "It is ideal for massive headers where you want to make a strong impact and have plenty of vertical and horizontal space."
+    answer: "It is ideal for massive headers where you want to make a strong impact and have plenty of vertical and horizontal space to accommodate the large character sizes."
+  },
+  {
+    question: "Does the Doom font support lowercase letters?",
+    answer: "Most implementations of the Doom FIGlet font focus on uppercase characters for maximum impact, though some variations may include lowercase glyphs."
   }
 ];
 
@@ -31,7 +35,7 @@ export default function DoomStylePage() {
           Doom ASCII Style
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Massive, aggressive ASCII text generation.
+          Bold, aggressive, and massive ASCII text generation.
         </p>
       </div>
 
@@ -46,12 +50,24 @@ export default function DoomStylePage() {
 
       <div className="prose prose-neutral dark:prose-invert max-w-none">
         <h2>Frequently Asked Questions</h2>
-        {faqItems.map((faq, index) => (
-          <div key={index} className="mb-4">
-            <h3>{faq.question}</h3>
-            <p>{faq.answer}</p>
-          </div>
-        ))}
+        <div className="grid gap-6">
+          {faqItems.map((faq, index) => (
+            <div key={index} className="border-b pb-4 last:border-0">
+              <h3 className="text-xl font-semibold mb-2">{faq.question}</h3>
+              <p className="text-muted-foreground">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="mt-12">The Power of the Doom Style</h2>
+        <p>If you need your text art to command attention, look no further than the Doom style. This font is designed to be loud. Its thick strokes and slight 3D slant make it pop off the page, providing a sense of power and nostalgia that few other ASCII fonts can match.</p>
+
+        <h3>Ideal Use Cases:</h3>
+        <ul>
+          <li><strong>Gaming Profiles:</strong> Perfect for Discord or Steam bio headers.</li>
+          <li><strong>Large Banners:</strong> Use it at the top of terminal applications for a &quot;pro&quot; look.</li>
+          <li><strong>Retro Projects:</strong> Adds an authentic 90s computing vibe to any project.</li>
+        </ul>
       </div>
     </div>
   );
