@@ -6,19 +6,23 @@ import { JsonLd } from "@/components/JsonLd";
 import { buildFaqSchema } from "@/lib/seo/buildSchema";
 
 export const metadata = resolveMetadata(buildProductMeta({
-  title: "Standard ASCII Style | Text Generator",
-  description: "Generate text using the classic Standard ASCII font style. Clean, readable, and perfect for any occasion.",
+  title: "Standard ASCII Style | Clean Text Generator",
+  description: "Generate text using the classic Standard ASCII font style. Clean, highly readable, and perfect for professional documentation.",
   slug: "/styles/standard",
 }));
 
 const faqItems = [
   {
     question: "What is the Standard ASCII style?",
-    answer: "The Standard style is one of the oldest and most widely used FIGlet fonts. It is highly readable and blocky."
+    answer: "The Standard style is the original and most widely used FIGlet font. It is characterized by its clean, blocky, and highly legible appearance."
   },
   {
     question: "Where should I use the Standard style?",
-    answer: "Because of its legibility, it is perfect for code comments, README headers, and terminal welcome messages."
+    answer: "Because of its exceptional readability, it is the perfect choice for code headers, README files, and terminal welcome messages."
+  },
+  {
+    question: "Does the Standard style support special characters?",
+    answer: "Yes, the Standard FIGlet font supports a wide range of alphanumeric and special characters found on most keyboards."
   }
 ];
 
@@ -31,7 +35,7 @@ export default function StandardStylePage() {
           Standard ASCII Style
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          The classic, readable ASCII font style.
+          The timeless, highly readable classic ASCII font.
         </p>
       </div>
 
@@ -46,12 +50,24 @@ export default function StandardStylePage() {
 
       <div className="prose prose-neutral dark:prose-invert max-w-none">
         <h2>Frequently Asked Questions</h2>
-        {faqItems.map((faq, index) => (
-          <div key={index} className="mb-4">
-            <h3>{faq.question}</h3>
-            <p>{faq.answer}</p>
-          </div>
-        ))}
+        <div className="grid gap-6">
+          {faqItems.map((faq, index) => (
+            <div key={index} className="border-b pb-4 last:border-0">
+              <h3 className="text-xl font-semibold mb-2">{faq.question}</h3>
+              <p className="text-muted-foreground">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="mt-12">Why Choose the Standard Style?</h2>
+        <p>In the world of ASCII art, clarity is often just as important as creativity. The Standard style strikes the perfect balance, providing a stylized look that doesn&apos;t sacrifice legibility. It&apos;s the &quot;Helvetica&quot; of FIGlet fonts—reliable, professional, and universally understood.</p>
+
+        <h3>Key Features:</h3>
+        <ul>
+          <li><strong>High Legibility:</strong> Even at smaller resolutions, the characters remain distinct.</li>
+          <li><strong>Universal Compatibility:</strong> Works perfectly across all terminals and text editors.</li>
+          <li><strong>Professional Look:</strong> Ideal for documentation and formal project headers.</li>
+        </ul>
       </div>
     </div>
   );

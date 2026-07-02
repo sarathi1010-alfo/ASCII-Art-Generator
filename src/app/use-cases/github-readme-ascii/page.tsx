@@ -6,19 +6,23 @@ import { JsonLd } from "@/components/JsonLd";
 import { buildFaqSchema } from "@/lib/seo/buildSchema";
 
 export const metadata = resolveMetadata(buildProductMeta({
-  title: "GitHub README ASCII Art | Profile Customization",
-  description: "Enhance your GitHub profile and project READMEs with custom ASCII art headers and banners.",
+  title: "GitHub README ASCII Art | Profile Customization Guide",
+  description: "Enhance your GitHub profile and project READMEs with custom ASCII art headers, banners, and icons. Stand out in the developer community.",
   slug: "/use-cases/github-readme-ascii",
 }));
 
 const faqItems = [
   {
     question: "How do I add ASCII art to my GitHub README?",
-    answer: "Generate your ASCII art, then paste it inside a Markdown code block (using triple backticks) in your README.md file."
+    answer: "Generate your ASCII art, then paste it inside a Markdown code block (using triple backticks) or an HTML <pre> tag in your README.md file."
   },
   {
     question: "Will ASCII art look good on dark and light mode?",
-    answer: "Yes, as long as it is standard text-based ASCII inside a code block, GitHub handles the contrast for both light and dark themes automatically."
+    answer: "Yes, standard text-based ASCII inside a code block will adapt to both light and dark themes on GitHub automatically."
+  },
+  {
+    question: "Can I use color in my GitHub ASCII art?",
+    answer: "Standard GitHub Markdown does not support ANSI colors. However, you can use HTML <span> tags with style attributes if you want to add color manually, though this is much more complex."
   }
 ];
 
@@ -31,7 +35,7 @@ export default function GitHubUseCasePage() {
           ASCII Art for GitHub READMEs
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Make your developer profile stand out with custom text banners.
+          Make your repositories and developer profile stand out with unique text-based branding.
         </p>
       </div>
 
@@ -46,12 +50,24 @@ export default function GitHubUseCasePage() {
 
       <div className="prose prose-neutral dark:prose-invert max-w-none">
         <h2>Frequently Asked Questions</h2>
-        {faqItems.map((faq, index) => (
-          <div key={index} className="mb-4">
-            <h3>{faq.question}</h3>
-            <p>{faq.answer}</p>
-          </div>
-        ))}
+        <div className="grid gap-6">
+          {faqItems.map((faq, index) => (
+            <div key={index} className="border-b pb-4 last:border-0">
+              <h3 className="text-xl font-semibold mb-2">{faq.question}</h3>
+              <p className="text-muted-foreground">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="mt-12">Branding Your GitHub Profile</h2>
+        <p>In the developer world, your GitHub profile is your digital resume. Adding a custom ASCII art header to your personal README or your most popular project is an excellent way to show attention to detail and a touch of technical creativity. It provides a unique visual identity that standard fonts simply can&apos;t match.</p>
+
+        <h3>Placement Tips:</h3>
+        <ul>
+          <li><strong>Hero Banners:</strong> Place a large ASCII art title at the very top of your README for maximum impact.</li>
+          <li><strong>Section Dividers:</strong> Use smaller ASCII patterns to separate different parts of your documentation.</li>
+          <li><strong>Project Logos:</strong> Convert your project&apos;s logo into ASCII art to keep your documentation lightweight and fast-loading.</li>
+        </ul>
       </div>
     </div>
   );
