@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Which shell files should I edit?",
     answer: "For bash users, edit ~/.bashrc. For Zsh users (default on macOS), edit ~/.zshrc. For Fish users, edit the fish_greeting function."
+  },
+  {
+    question: "What is neofetch or screenfetch?",
+    answer: "These are CLI tools that display system information alongside an ASCII logo of your operating system. You can often replace these with your own custom ASCII art."
   }
 ];
 

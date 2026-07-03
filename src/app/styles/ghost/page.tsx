@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Where is the Ghost style most popular?",
     answer: "It is frequently used in community forums, Discord servers, and casual project READMEs to add a touch of personality and fun."
+  },
+  {
+    question: "Can I use Ghost font for long sentences?",
+    answer: "Ghost is best suited for short words or banners. Long sentences can become difficult to read due to the intricate bubble shapes."
   }
 ];
 

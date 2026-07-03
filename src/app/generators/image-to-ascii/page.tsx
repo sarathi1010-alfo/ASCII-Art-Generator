@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Are my photos uploaded to a server?",
     answer: "No, our Image to ASCII Generator runs entirely client-side. Your images are processed locally and never leave your browser."
+  },
+  {
+    question: "Can I download the ASCII output?",
+    answer: "Yes, you can copy the text to your clipboard or download it as a .txt file. Some generators also allow you to save the output as an image."
   }
 ];
 

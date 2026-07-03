@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Does the Doom font support lowercase letters?",
     answer: "Most implementations of the Doom FIGlet font focus on uppercase characters for maximum impact, though some variations may include lowercase glyphs."
+  },
+  {
+    question: "How do I format Doom ASCII art?",
+    answer: "Because it's quite large, always use monospaced fonts and wrap the art in code blocks (```) to preserve its shape."
   }
 ];
 
