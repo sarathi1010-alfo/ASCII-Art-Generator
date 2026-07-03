@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Why does my ASCII art look shifted in Discord?",
     answer: "This usually happens because a proportional font is being used instead of a monospaced one. Triple backticks are the solution."
+  },
+  {
+    question: "Are there character limits for ASCII art in Discord?",
+    answer: "Standard Discord accounts have a 2,000 character limit per message. Discord Nitro increases this to 4,000 characters."
   }
 ];
 

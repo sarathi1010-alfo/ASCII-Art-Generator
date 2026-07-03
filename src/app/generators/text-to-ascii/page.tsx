@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Is this tool free and private?",
     answer: "Yes, our Text to ASCII Generator is 100% free and processes everything locally in your browser, meaning your text never leaves your device."
+  },
+  {
+    question: "What are FIGlet fonts?",
+    answer: "FIGlet fonts are a specialized font format used to create large text banners from smaller characters. There are hundreds of styles available, from blocky to script-like."
   }
 ];
 

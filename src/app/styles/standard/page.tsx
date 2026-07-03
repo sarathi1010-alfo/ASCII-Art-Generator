@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Does the Standard style support special characters?",
     answer: "Yes, the Standard FIGlet font supports a wide range of alphanumeric and special characters found on most keyboards."
+  },
+  {
+    question: "How do I use this style in my project?",
+    answer: "Simply enter your text in our generator, select 'Standard' as the font, and copy the resulting ASCII art into your code or documentation."
   }
 ];
 

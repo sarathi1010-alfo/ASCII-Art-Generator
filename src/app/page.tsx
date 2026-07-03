@@ -20,6 +20,7 @@ export default function Home() {
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
           The fastest browser-based ASCII art platform. No software to install, no server delays. Pure client-side generation.
+          New: Read our <Link href="/blog/ascii-art-guide" className="text-primary hover:underline">ultimate guide to ASCII art</Link>.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 pt-4">
           <Link href="/text-to-ascii">
