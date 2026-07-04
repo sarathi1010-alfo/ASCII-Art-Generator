@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Does the Standard style support special characters?",
     answer: "Yes, the Standard FIGlet font supports a wide range of alphanumeric and special characters found on most keyboards."
+  },
+  {
+    question: "How do I ensure the Standard style stays aligned?",
+    answer: "Always use a monospaced font like Courier, JetBrains Mono, or Consolas when viewing the output. This ensures all characters have the same width."
   }
 ];
 

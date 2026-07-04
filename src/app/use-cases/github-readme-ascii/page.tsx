@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Can I use color in my GitHub ASCII art?",
     answer: "Standard GitHub Markdown does not support ANSI colors. However, you can use HTML <span> tags with style attributes if you want to add color manually, though this is much more complex."
+  },
+  {
+    question: "Is ASCII art accessible to screen readers?",
+    answer: "ASCII art can be difficult for screen readers. It's best practice to provide an alt-text description or wrap the art in an <aria-label> to explain what the image represents."
   }
 ];
 

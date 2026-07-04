@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Which shell files should I edit?",
     answer: "For bash users, edit ~/.bashrc. For Zsh users (default on macOS), edit ~/.zshrc. For Fish users, edit the fish_greeting function."
+  },
+  {
+    question: "Can I use 'neofetch' with custom ASCII art?",
+    answer: "Yes! Neofetch and similar tools allow you to specify a custom ASCII file using the '--source' flag, allowing you to combine system info with your own art."
   }
 ];
 

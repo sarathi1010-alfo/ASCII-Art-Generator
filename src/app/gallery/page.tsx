@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import templatesData from "@/data/templates.json";
 import categoriesData from "@/data/categories.json";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Copy, Check, Search } from "lucide-react";
+import { Copy, Check, Search, Info } from "lucide-react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export default function GalleryPage() {
@@ -32,6 +33,16 @@ export default function GalleryPage() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight mb-2">ASCII Art Gallery</h1>
         <p className="text-muted-foreground">Discover, copy, and share popular ASCII art creations.</p>
+      </div>
+
+      <div className="bg-primary/5 border border-primary/10 rounded-xl p-4 mb-8 flex items-start gap-3">
+        <Info className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+        <p className="text-sm">
+          Want to learn how to create your own masterpieces from scratch? Read our comprehensive guide on{" "}
+          <Link href="/blog/ascii-art-guide" className="text-primary font-medium underline underline-offset-4 hover:opacity-80">
+            how to create ASCII art from images and text
+          </Link>.
+        </p>
       </div>
 
       <div className="flex flex-col md:flex-row gap-4 mb-8">

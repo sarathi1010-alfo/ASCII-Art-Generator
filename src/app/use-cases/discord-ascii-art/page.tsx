@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Why does my ASCII art look shifted in Discord?",
     answer: "This usually happens because a proportional font is being used instead of a monospaced one. Triple backticks are the solution."
+  },
+  {
+    question: "Does Discord support ANSI color art?",
+    answer: "Yes, modern Discord desktop and web clients support ANSI color codes within code blocks labeled as 'ansi'. Use our ANSI color mode to create these."
   }
 ];
 
