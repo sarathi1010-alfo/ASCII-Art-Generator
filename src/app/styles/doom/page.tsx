@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Does the Doom font support lowercase letters?",
     answer: "Most implementations of the Doom FIGlet font focus on uppercase characters for maximum impact, though some variations may include lowercase glyphs."
+  },
+  {
+    question: "How wide is the Doom ASCII font?",
+    answer: "Doom is a very wide font. A single word can easily exceed 80 or even 100 characters in width, so it is best used in environments with plenty of horizontal space."
   }
 ];
 

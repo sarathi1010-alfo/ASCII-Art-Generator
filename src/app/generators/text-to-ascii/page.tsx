@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Is this tool free and private?",
     answer: "Yes, our Text to ASCII Generator is 100% free and processes everything locally in your browser, meaning your text never leaves your device."
+  },
+  {
+    question: "Can I use ASCII art on social media?",
+    answer: "Absolutely! ASCII art works great on platforms like X (Twitter), Reddit, and LinkedIn. However, formatting can sometimes break on mobile apps that don't use monospaced fonts by default."
   }
 ];
 

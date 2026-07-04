@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Where is the Ghost style most popular?",
     answer: "It is frequently used in community forums, Discord servers, and casual project READMEs to add a touch of personality and fun."
+  },
+  {
+    question: "How do I copy the Ghost ASCII output?",
+    answer: "Simply click the 'Copy' button in our generator. The Ghost style output is standard text and can be pasted anywhere that supports monospaced fonts."
   }
 ];
 
