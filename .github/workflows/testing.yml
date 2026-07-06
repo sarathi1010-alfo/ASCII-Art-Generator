@@ -1,0 +1,298 @@
+name: Auto Commit on PR
+
+# WHEN THIS RUNS
+#   - pull_request: opened/synchronize/reopened/edited -> fires live on every incoming PR
+#   - workflow_dispatch                                 -> sweeps PRs that already existed
+#     before this workflow was added, then force-merges them one by one in ascending PR
+#     number order. Conflicts are handed to Jules (jules.google) to resolve; Jules's
+#     resolution is accepted and the merge is retried.
+#
+# SECRETS USED (repo Settings -> Secrets and variables -> Actions)
+#   PAT            - GitHub PAT (repo scope). Used for checkout/push/merge instead of the
+#                    default GITHUB_TOKEN.
+#   GCP_SA_KEY     - GCP service account JSON key, used for the Google Indexing API step.
+#   JULES_API_KEY  - NEW, required for conflict resolution below. Not in your current secrets
+#                    list (GCP_SA_KEY / PAT / VERCEL_TOKEN) -- add it: get a key at
+#                    jules.google.com -> Settings -> API, then add as a repo secret.
+#   VERCEL_TOKEN   - present but not wired into this workflow.
+#
+# WHAT TO CUSTOMIZE (marked inline)
+#   1. The "Run auto-fix" command in both jobs (currently a no-op placeholder)
+#   2. The changed-file -> URL mapping in the indexing step
+#   3. The Jules API request body below -- verify current schema at
+#      https://jules.google/docs/api/reference before relying on this in production
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Specific PR number (blank = sweep every open PR)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  GH_TOKEN: ${{ secrets.PAT }}
+
+jobs:
+  # ── Incoming / upcoming: fires live on open, push, reopen ──
+  direct:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.PAT }}
+          fetch-depth: 2
+
+      - name: Run auto-fix
+        run: |
+          # >>> CUSTOMIZE THIS <<<
+          echo "no-op placeholder"
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: automated update [skip ci]"
+
+      - name: Submit changed URLs to Google Indexing API
+        run: |
+          # >>> CUSTOMIZE THIS: map changed files to real URLs for your site <<<
+          echo '${{ secrets.GCP_SA_KEY }}' > /tmp/gcp-key.json
+          gcloud auth activate-service-account --key-file=/tmp/gcp-key.json --quiet
+          ACCESS_TOKEN=$(gcloud auth print-access-token)
+          rm -f /tmp/gcp-key.json
+
+          for f in $(git diff --name-only HEAD~1 HEAD); do
+            url="https://example.com/${f%.md}"
+            curl -s -X POST \
+              -H "Authorization: Bearer $ACCESS_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "{\"url\": \"$url\", \"type\": \"URL_UPDATED\"}" \
+              "https://indexing.googleapis.com/v3/urlNotifications:publish"
+          done
+
+      - name: Resolve default branch and PR base
+        id: branchcheck
+        run: |
+          default_branch=$(gh repo view "$GITHUB_REPOSITORY" --json defaultBranchRef --jq .defaultBranchRef.name)
+          base_branch=$(gh pr view ${{ github.event.pull_request.number }} --repo "$GITHUB_REPOSITORY" --json baseRefName --jq .baseRefName)
+          echo "default=$default_branch" >> "$GITHUB_OUTPUT"
+          echo "base=$base_branch" >> "$GITHUB_OUTPUT"
+
+      - name: Auto-merge into default branch
+        if: steps.branchcheck.outputs.base == steps.branchcheck.outputs.default
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} \
+            --merge --auto --delete-branch \
+            --repo "$GITHUB_REPOSITORY" \
+            || echo "auto-merge could not be enabled (branch protection / required checks may still be pending)"
+
+  # ── Already-existing PRs: discover targets on manual dispatch ──
+  discover:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    outputs:
+      prs: ${{ steps.list.outputs.prs }}
+    steps:
+      - id: list
+        run: |
+          if [ -n "${{ github.event.inputs.pr_number }}" ]; then
+            echo "prs=[${{ github.event.inputs.pr_number }}]" >> "$GITHUB_OUTPUT"
+          else
+            prs=$(gh pr list --repo "$GITHUB_REPOSITORY" --state open --json number --jq '[.[].number] | sort')
+            echo "prs=$prs" >> "$GITHUB_OUTPUT"
+          fi
+
+  # Runs auto-fix + indexing per PR (order doesn't matter here, safe to parallelize)
+  sweep:
+    needs: discover
+    if: needs.discover.outputs.prs != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pr: ${{ fromJson(needs.discover.outputs.prs) }}
+    steps:
+      - id: ref
+        run: |
+          headref=$(gh pr view ${{ matrix.pr }} --repo "$GITHUB_REPOSITORY" --json headRefName --jq .headRefName)
+          echo "headref=$headref" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.ref.outputs.headref }}
+          token: ${{ secrets.PAT }}
+          fetch-depth: 2
+
+      - name: Run auto-fix
+        run: |
+          # >>> CUSTOMIZE THIS (keep in sync with the `direct` job) <<<
+          echo "no-op placeholder"
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: automated update [skip ci]"
+          branch: ${{ steps.ref.outputs.headref }}
+
+      - name: Submit changed URLs to Google Indexing API
+        run: |
+          # >>> CUSTOMIZE THIS: map changed files to real URLs for your site <<<
+          echo '${{ secrets.GCP_SA_KEY }}' > /tmp/gcp-key.json
+          gcloud auth activate-service-account --key-file=/tmp/gcp-key.json --quiet
+          ACCESS_TOKEN=$(gcloud auth print-access-token)
+          rm -f /tmp/gcp-key.json
+
+          for f in $(git diff --name-only HEAD~1 HEAD); do
+            url="https://example.com/${f%.md}"
+            curl -s -X POST \
+              -H "Authorization: Bearer $ACCESS_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "{\"url\": \"$url\", \"type\": \"URL_UPDATED\"}" \
+              "https://indexing.googleapis.com/v3/urlNotifications:publish"
+          done
+
+  # ── Force-merge existing PRs one by one, ascending PR number ──
+  # Sequential (not matrix) because merging PR #1 changes what PR #2 merges against --
+  # doing this in parallel would cause conflicting/duplicate merges.
+  force-merge-ascending:
+    needs: [discover, sweep]
+    if: needs.discover.outputs.prs != '[]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge PRs ascending, resolving conflicts via Jules
+        env:
+          JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+          PAT: ${{ secrets.PAT }}
+        run: |
+          prs='${{ needs.discover.outputs.prs }}'
+          owner="${GITHUB_REPOSITORY%%/*}"
+          repo="${GITHUB_REPOSITORY##*/}"
+
+          # Look up this repo's Jules "source" name once (format varies, so ask the API
+          # rather than guessing the string -- per Jules docs' own recommended flow).
+          sources_resp=$(curl -s "https://jules.googleapis.com/v1alpha/sources?pageSize=100" \
+            -H "X-Goog-Api-Key: $JULES_API_KEY")
+          echo "Jules sources response: $sources_resp"
+          source_name=$(echo "$sources_resp" | jq -r --arg o "$owner" --arg r "$repo" \
+            '.sources[] | select(.githubRepo.owner==$o and .githubRepo.repo==$r) | .name')
+          echo "Resolved source_name: '$source_name'"
+
+          if [ -z "$source_name" ]; then
+            echo "WARNING: no Jules source found for $owner/$repo -- conflict resolution will be skipped for all PRs"
+          fi
+
+          for pr in $(echo "$prs" | jq -r '.[]'); do
+            echo "=== PR #$pr ==="
+
+            mergeable=$(gh pr view "$pr" --repo "$GITHUB_REPOSITORY" --json mergeable --jq .mergeable)
+            echo "PR #$pr initial mergeable: '$mergeable'"
+
+            # mergeable is computed async by GitHub -- if it's still UNKNOWN, poll
+            # briefly instead of trusting a value that hasn't been computed yet.
+            for k in $(seq 1 6); do
+              [ "$mergeable" != "UNKNOWN" ] && break
+              sleep 5
+              mergeable=$(gh pr view "$pr" --repo "$GITHUB_REPOSITORY" --json mergeable --jq .mergeable)
+              echo "PR #$pr mergeable recheck $k: '$mergeable'"
+            done
+
+            if [ "$mergeable" = "CONFLICTING" ] && [ -z "$source_name" ]; then
+              echo "PR #$pr has conflicts but no Jules source was found for $owner/$repo -> cannot resolve, will attempt merge as-is and likely fail"
+            fi
+
+            if [ "$mergeable" = "CONFLICTING" ] && [ -n "$source_name" ]; then
+              echo "PR #$pr has conflicts -> requesting Jules to resolve"
+              headref=$(gh pr view "$pr" --repo "$GITHUB_REPOSITORY" --json headRefName --jq .headRefName)
+
+              create_resp=$(curl -s -X POST "https://jules.googleapis.com/v1alpha/sessions" \
+                -H "X-Goog-Api-Key: $JULES_API_KEY" \
+                -H "Content-Type: application/json" \
+                -d "{
+                      \"prompt\": \"Resolve all merge conflicts on this branch against the repository's default branch. For each conflicted file, pick the correct resolution.\",
+                      \"title\": \"Resolve conflicts on ${headref}\",
+                      \"sourceContext\": {
+                        \"source\": \"${source_name}\",
+                        \"githubRepoContext\": { \"startingBranch\": \"${headref}\" }
+                      }
+                    }")
+              echo "Jules create response: $create_resp"
+              session_name=$(echo "$create_resp" | jq -r '.name // empty')
+
+              if [ -z "$session_name" ]; then
+                echo "PR #$pr: Jules session creation failed -> skipping"
+                mergeable="CONFLICTING"
+              else
+                state=""
+                for i in $(seq 1 30); do
+                  poll_resp=$(curl -s "https://jules.googleapis.com/v1alpha/${session_name}" \
+                    -H "X-Goog-Api-Key: $JULES_API_KEY")
+                  state=$(echo "$poll_resp" | jq -r '.state // empty')
+                  echo "  poll $i: $state"
+                  if [ "$state" = "COMPLETED" ] || [ "$state" = "FAILED" ]; then
+                    break
+                  fi
+                  sleep 20
+                done
+
+                if [ "$state" != "COMPLETED" ]; then
+                  echo "PR #$pr: Jules session ended in state '$state' -> skipping"
+                  mergeable="CONFLICTING"
+                else
+                  # Jules doesn't push back to the branch itself -- pull the patch out of
+                  # the session's activities and apply/push it ourselves. This is the
+                  # "accept and continue to corresponding files" step.
+                  activities=$(curl -s "https://jules.googleapis.com/v1alpha/${session_name}/activities?pageSize=50" \
+                    -H "X-Goog-Api-Key: $JULES_API_KEY")
+                  patch=$(echo "$activities" | jq -r \
+                    '[.activities[]? | select(.artifacts != null) | .artifacts[] | select(.changeSet != null) | .changeSet.gitPatch.unidiffPatch] | last // empty')
+                  commit_msg=$(echo "$activities" | jq -r \
+                    '[.activities[]? | select(.artifacts != null) | .artifacts[] | select(.changeSet != null) | .changeSet.gitPatch.suggestedCommitMessage] | last // "fix: resolve merge conflicts via Jules"')
+
+                  if [ -z "$patch" ]; then
+                    echo "PR #$pr: no patch found in Jules session output -> skipping"
+                    mergeable="CONFLICTING"
+                  else
+                    work_dir="/tmp/pr-$pr"
+                    rm -rf "$work_dir"
+                    git clone --branch "$headref" "https://x-access-token:${PAT}@github.com/${GITHUB_REPOSITORY}.git" "$work_dir"
+                    echo "$patch" > "$work_dir.patch"
+
+                    if (cd "$work_dir" && git apply "../pr-$pr.patch" \
+                        && git config user.name "jules-conflict-bot" \
+                        && git config user.email "jules-bot@users.noreply.github.com" \
+                        && git add -A && git commit -m "$commit_msg" \
+                        && git push origin "HEAD:$headref"); then
+                      # mergeable is computed async by GitHub -- poll until it's fresh
+                      # (not UNKNOWN) instead of trusting the first read after a push.
+                      mergeable="UNKNOWN"
+                      for j in $(seq 1 10); do
+                        mergeable=$(gh pr view "$pr" --repo "$GITHUB_REPOSITORY" --json mergeable --jq .mergeable)
+                        echo "  mergeable recheck $j: $mergeable"
+                        [ "$mergeable" != "UNKNOWN" ] && break
+                        sleep 5
+                      done
+                    else
+                      echo "PR #$pr: failed to apply/push Jules's patch -> skipping"
+                      mergeable="CONFLICTING"
+                    fi
+                  fi
+                fi
+              fi
+            fi
+
+            if [ "$mergeable" = "CONFLICTING" ]; then
+              echo "PR #$pr: still conflicting -> skipping, needs manual review"
+              continue
+            fi
+
+            gh pr merge "$pr" --merge --admin --delete-branch --repo "$GITHUB_REPOSITORY" \
+              || echo "PR #$pr: merge failed"
+          done
