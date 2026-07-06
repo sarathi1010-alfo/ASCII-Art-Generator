@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Where is the Ghost style most popular?",
     answer: "It is frequently used in community forums, Discord servers, and casual project READMEs to add a touch of personality and fun."
+  },
+  {
+    question: "How tall is the Ghost font?",
+    answer: "The Ghost FIGlet font is typically 7 characters high, making it a medium-sized font that balances visibility with vertical efficiency."
   }
 ];
 

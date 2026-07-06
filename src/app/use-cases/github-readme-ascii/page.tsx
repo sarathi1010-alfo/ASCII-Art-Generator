@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Can I use color in my GitHub ASCII art?",
     answer: "Standard GitHub Markdown does not support ANSI colors. However, you can use HTML <span> tags with style attributes if you want to add color manually, though this is much more complex."
+  },
+  {
+    question: "How do I center ASCII art on GitHub?",
+    answer: "You can wrap your code block or <pre> tag inside a <div align='center'> tag to center the ASCII art horizontally."
   }
 ];
 

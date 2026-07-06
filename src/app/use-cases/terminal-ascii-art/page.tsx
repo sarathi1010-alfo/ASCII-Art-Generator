@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Which shell files should I edit?",
     answer: "For bash users, edit ~/.bashrc. For Zsh users (default on macOS), edit ~/.zshrc. For Fish users, edit the fish_greeting function."
+  },
+  {
+    question: "How do I make a ASCII banner for my script?",
+    answer: "You can use the 'echo' command with multi-line strings or heredocs in your bash script to print the ASCII art banner when the script runs."
   }
 ];
 
