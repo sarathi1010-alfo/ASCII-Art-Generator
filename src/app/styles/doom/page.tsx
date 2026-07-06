@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Does the Doom font support lowercase letters?",
     answer: "Most implementations of the Doom FIGlet font focus on uppercase characters for maximum impact, though some variations may include lowercase glyphs."
+  },
+  {
+    question: "Why is it called the Doom font?",
+    answer: "It is named after the legendary 1993 first-person shooter 'Doom', as it emulates the bold, blocky typography used in the game's marketing and UI."
   }
 ];
 

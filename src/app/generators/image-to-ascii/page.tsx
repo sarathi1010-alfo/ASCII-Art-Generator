@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Are my photos uploaded to a server?",
     answer: "No, our Image to ASCII Generator runs entirely client-side. Your images are processed locally and never leave your browser."
+  },
+  {
+    question: "What is the best format for export?",
+    answer: "For maximum compatibility, exporting as a plain .txt file or copying the raw text is best. You can also export as an HTML file with embedded CSS for colors."
   }
 ];
 

@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Does the Standard style support special characters?",
     answer: "Yes, the Standard FIGlet font supports a wide range of alphanumeric and special characters found on most keyboards."
+  },
+  {
+    question: "Is Standard better than Doom?",
+    answer: "It depends on your needs. Standard is more readable and compact, making it better for documentation, while Doom is better for large, high-impact headers."
   }
 ];
 

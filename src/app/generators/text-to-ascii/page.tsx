@@ -23,6 +23,10 @@ const faqItems = [
   {
     question: "Is this tool free and private?",
     answer: "Yes, our Text to ASCII Generator is 100% free and processes everything locally in your browser, meaning your text never leaves your device."
+  },
+  {
+    question: "Can I use different font styles?",
+    answer: "Yes, we offer over 100 different FIGlet fonts, including popular styles like Standard, Slant, Doom, and Ghost."
   }
 ];
 
