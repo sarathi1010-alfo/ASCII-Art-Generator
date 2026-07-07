@@ -2,12 +2,33 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { resolveMetadata } from "@/lib/seo/resolveMetadata";
 import { buildProductMeta } from "@/lib/seo/metaFactories";
+import { JsonLd } from "@/components/JsonLd";
+import { buildFaqSchema } from "@/lib/seo/buildSchema";
 
 export const metadata = resolveMetadata(buildProductMeta({
   title: "Free Discord Templates | Image To Ascii",
-  description: "Browse our collection of free Discord templates and use our Image To Ascii to customize them instantly.",
+  description: "Browse our collection of free Discord templates and use our Image To Ascii to customize them instantly. Optimize your profile picture or server banners.",
   slug: "/image-to-ascii/templates/discord",
 }));
+
+const faqItems = [
+  {
+    question: "How do I make ASCII art look good on Discord?",
+    answer: "The key is to use the right resolution. Discord's chat width is limited, so we recommend setting your resolution to 40-60 characters wide and always using triple backticks (\`\`\`) to preserve formatting."
+  },
+  {
+    question: "Can I convert my Discord PFP to ASCII?",
+    answer: "Yes! Upload your profile picture to our Image to ASCII tool, adjust the contrast and resolution, and you'll have a unique text-based version of your avatar in seconds."
+  },
+  {
+    question: "Does the generator support colored ASCII for Discord?",
+    answer: "While Discord doesn't natively support full ANSI color in regular messages, you can use our 'Discord' export button to format your art for Discord's built-in syntax highlighting (using 'ansi' blocks)."
+  },
+  {
+    question: "Is there a limit to the size of art I can post in Discord?",
+    answer: "Discord has a 2,000 character limit for regular users (4,000 for Nitro). If your art exceeds this, you can try lowering the resolution or posting it as an attached .txt file."
+  }
+];
 
 export default function TemplatePage() {
   return (
@@ -34,10 +55,29 @@ export default function TemplatePage() {
       </div>
 
       <div className="prose prose-neutral dark:prose-invert max-w-none">
+        <JsonLd schema={buildFaqSchema(faqItems)} />
         <h2>About These Templates</h2>
         <p>
-          Our Discord templates are designed to give you a head start. Combine them with the raw power of our client-side generator to produce stunning results in seconds.
+          Our Discord templates are designed to give you a head start. Combine them with the raw power of our client-side generator to produce stunning results in seconds. Optimize your visual identity for one of the world&apos;s most popular community platforms.
         </p>
+
+        <h2>How to Optimize ASCII Art for Discord</h2>
+        <ol>
+          <li>Upload your image to the <strong><Link href="/image-to-ascii">Image To Ascii</Link></strong> tool.</li>
+          <li>Set the width to approximately 50 characters to ensure it fits on mobile and desktop screens.</li>
+          <li>Increase the contrast to help the art stand out against Discord&apos;s dark or light themes.</li>
+          <li>Click the &apos;Discord&apos; copy button to automatically wrap your art in the correct code block syntax.</li>
+        </ol>
+
+        <h2>Frequently Asked Questions</h2>
+        <div className="grid gap-6 mt-6">
+          {faqItems.map((faq, index) => (
+            <div key={index} className="border-b pb-4 last:border-0">
+              <h3 className="text-xl font-semibold mb-2">{faq.question}</h3>
+              <p className="text-muted-foreground">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

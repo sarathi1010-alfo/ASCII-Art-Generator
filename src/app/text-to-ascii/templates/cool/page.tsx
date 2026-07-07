@@ -2,12 +2,33 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { resolveMetadata } from "@/lib/seo/resolveMetadata";
 import { buildProductMeta } from "@/lib/seo/metaFactories";
+import { JsonLd } from "@/components/JsonLd";
+import { buildFaqSchema } from "@/lib/seo/buildSchema";
 
 export const metadata = resolveMetadata(buildProductMeta({
   title: "Free Cool Templates | Text To Ascii",
-  description: "Browse our collection of free Cool templates and use our Text To Ascii to customize them instantly.",
+  description: "Browse our collection of free Cool templates and use our Text To Ascii to customize them instantly. High-impact designs for profiles and banners.",
   slug: "/text-to-ascii/templates/cool",
 }));
+
+const faqItems = [
+  {
+    question: "What makes an ASCII template 'cool'?",
+    answer: "Cool templates often use stylized fonts like 'Doom' or 'Slant' and incorporate decorative borders or character-based shading to create a high-impact visual effect."
+  },
+  {
+    question: "Can I customize these templates?",
+    answer: "Absolutely! You can use our Text To Ascii tool to change the text, font, and layout of any template to fit your specific needs."
+  },
+  {
+    question: "Where can I use cool ASCII art?",
+    answer: "These designs are perfect for GitHub profile READMEs, Discord community banners, and terminal start screens."
+  },
+  {
+    question: "Are these templates free to use?",
+    answer: "Yes, all templates on ASCII Forge are 100% free for both personal and commercial projects."
+  }
+];
 
 export default function TemplatePage() {
   return (
@@ -34,10 +55,29 @@ export default function TemplatePage() {
       </div>
 
       <div className="prose prose-neutral dark:prose-invert max-w-none">
+        <JsonLd schema={buildFaqSchema(faqItems)} />
         <h2>About These Templates</h2>
         <p>
-          Our Cool templates are designed to give you a head start. Combine them with the raw power of our client-side generator to produce stunning results in seconds.
+          Our Cool templates are designed to give you a head start. Combine them with the raw power of our client-side generator to produce stunning results in seconds. Whether you&apos;re looking for a retro hacker aesthetic or a modern, clean look, these templates provide the perfect foundation.
         </p>
+
+        <h2>How to Use Cool Templates</h2>
+        <ol>
+          <li>Browse the list of available cool designs below.</li>
+          <li>Click on a design to load it into the <strong><Link href="/text-to-ascii">Text To Ascii</Link></strong> tool.</li>
+          <li>Modify the text and experiment with different font styles.</li>
+          <li>Copy the final result and paste it wherever you need some extra flair!</li>
+        </ol>
+
+        <h2>Frequently Asked Questions</h2>
+        <div className="grid gap-6 mt-6">
+          {faqItems.map((faq, index) => (
+            <div key={index} className="border-b pb-4 last:border-0">
+              <h3 className="text-xl font-semibold mb-2">{faq.question}</h3>
+              <p className="text-muted-foreground">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

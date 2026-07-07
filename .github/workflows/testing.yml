@@ -37,7 +37,7 @@ permissions:
   pull-requests: write
 
 env:
-  GH_TOKEN: ${{ secrets.PAT }}
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   # ── Incoming / upcoming: fires live on open, push, reopen ──
@@ -48,7 +48,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 2
 
       - name: Run auto-fix
@@ -128,7 +128,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ steps.ref.outputs.headref }}
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 2
 
       - name: Run auto-fix
@@ -170,7 +170,7 @@ jobs:
       - name: Merge PRs ascending, resolving conflicts via Jules
         env:
           JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
-          PAT: ${{ secrets.PAT }}
+          PAT: ${{ secrets.GITHUB_TOKEN }}
         run: |
           prs='${{ needs.discover.outputs.prs }}'
           owner="${GITHUB_REPOSITORY%%/*}"

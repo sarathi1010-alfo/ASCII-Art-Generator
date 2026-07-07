@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 const ROUTES_TO_CHECK = [
-  '/blog/how-to-create-ascii-art',
+  '/blog/ascii-art-guide',
   '/generators/text-to-ascii',
   '/generators/image-to-ascii',
   '/styles/standard',
