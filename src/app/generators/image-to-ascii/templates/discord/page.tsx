@@ -66,6 +66,15 @@ export default function DiscordImageTemplatesPage() {
           <li><strong>Characters:</strong> Use a high-contrast set or the Braille engine for maximum detail.</li>
         </ul>
 
+        <h2>Tutorial: Converting Images for Discord Chat</h2>
+        <p>Sharing image-based ASCII art on Discord requires a few specific steps to avoid the common &quot;wrapping mess&quot; on mobile:</p>
+        <ol>
+          <li><strong>Upload Your Image:</strong> Go to the <Link href="/image-to-ascii">Image to ASCII tool</Link>.</li>
+          <li><strong>Limit Width:</strong> Set the width slider to no more than 40 characters. This ensures the art fits on mobile screens without wrapping.</li>
+          <li><strong>Adjust for Detail:</strong> If the art looks too blocky, try the &apos;Braille&apos; rendering engine. It uses 8 dots per character space to provide much higher resolution within the same footprint.</li>
+          <li><strong>Copy to Discord:</strong> Use the copy button, then in Discord, type ``` then Shift+Enter, paste your art, then another ```.</li>
+        </ol>
+
         <h2>Frequently Asked Questions</h2>
         <div className="grid gap-6">
           {faqItems.map((faq, index) => (

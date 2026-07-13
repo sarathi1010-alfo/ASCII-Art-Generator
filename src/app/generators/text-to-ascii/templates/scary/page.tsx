@@ -66,6 +66,15 @@ export default function ScaryTemplatesPage() {
           <li><strong>Tombstone:</strong> Heavy, blocky characters that look like they were carved in stone.</li>
         </ul>
 
+        <h2>Tutorial: How to Design a Dark Aesthetic Banner</h2>
+        <p>Creating a truly haunting ASCII banner involves more than just picking a font. Here is how to master the dark aesthetic:</p>
+        <ol>
+          <li><strong>Choose the Right Font:</strong> Use &apos;Bloody&apos; for a visceral look or &apos;Tombstone&apos; for a more monumental, static feel.</li>
+          <li><strong>Combine with Zalgo:</strong> For extra creepiness, use our <Link href="/zalgo-text-generator">Zalgo text generator</Link> to add &quot;glitch&quot; artifacts to the text before or after conversion.</li>
+          <li><strong>Maximize Contrast:</strong> If you&apos;re converting an image of something scary, ensure you use the high-contrast character set to keep the details sharp.</li>
+          <li><strong>Proper Formatting:</strong> Dark mode is best for horror art. Ensure your target platform (like Discord) is set to dark mode to make the characters pop against the background.</li>
+        </ol>
+
         <h2>Frequently Asked Questions</h2>
         <div className="grid gap-6">
           {faqItems.map((faq, index) => (
