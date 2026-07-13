@@ -19,7 +19,7 @@ const NEW_URLS = [
 
 test.describe('Daily Publishing Verification', () => {
   for (const url of NEW_URLS) {
-    test(`Verify ${url} status and console errors`, async ({ page }) => {
+    test(`Verify ${url} status, console errors, images, and CSS`, async ({ page }) => {
       const consoleErrors: string[] = [];
       page.on('console', msg => {
         if (msg.type() === 'error') consoleErrors.push(msg.text());
@@ -28,6 +28,22 @@ test.describe('Daily Publishing Verification', () => {
       const response = await page.goto(`${baseURL}${url}`);
       expect(response?.status()).toBe(200);
       expect(consoleErrors).toEqual([]);
+
+      // Check for broken images
+      const images = page.locator('img');
+      const imageCount = await images.count();
+      for (let i = 0; i < imageCount; i++) {
+        const img = images.nth(i);
+        const isVisible = await img.isVisible();
+        if (isVisible) {
+          const naturalWidth = await img.evaluate((node: HTMLImageElement) => node.naturalWidth);
+          expect(naturalWidth).toBeGreaterThan(0);
+        }
+      }
+
+      // Check for CSS presence (either a linked stylesheet or style tag)
+      const cssLink = page.locator('link[rel="stylesheet"], style');
+      await expect(cssLink.first()).toBeAttached();
     });
   }
 

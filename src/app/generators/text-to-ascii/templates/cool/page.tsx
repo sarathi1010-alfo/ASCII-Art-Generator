@@ -66,6 +66,15 @@ export default function CoolTemplatesPage() {
           <li><strong>Bloody:</strong> Ideal for a more aggressive or gothic aesthetic.</li>
         </ul>
 
+        <h2>Step-by-Step Tutorial: Creating Your First Cool Banner</h2>
+        <p>Follow these simple steps to create a high-impact ASCII banner for your project:</p>
+        <ol>
+          <li><strong>Input Your Text:</strong> Open the <Link href="/text-to-ascii">Text to ASCII tool</Link> and type your project name or username.</li>
+          <li><strong>Select a &quot;Cool&quot; Font:</strong> Choose from our curated list of styles like &apos;Slant&apos; or &apos;Doom&apos; from the dropdown menu.</li>
+          <li><strong>Adjust Character Width:</strong> Use the width slider to ensure your banner fits your intended platform (e.g., keeping it under 80 characters for standard terminals).</li>
+          <li><strong>Copy &amp; Paste:</strong> Click the &apos;Copy&apos; button and paste the result into your README.md or Discord message using triple backticks (```).</li>
+        </ol>
+
         <h2>Frequently Asked Questions</h2>
         <div className="grid gap-6">
           {faqItems.map((faq, index) => (
