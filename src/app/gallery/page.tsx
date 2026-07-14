@@ -31,7 +31,12 @@ export default function GalleryPage() {
     <div className="container mx-auto py-8 px-4 max-w-6xl">
       <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight mb-2">ASCII Art Gallery</h1>
-        <p className="text-muted-foreground">Discover, copy, and share popular ASCII art creations.</p>
+        <p className="text-muted-foreground">
+          Discover, copy, and share popular ASCII art creations. Learn how to create your own in our{" "}
+          <a href="/blog/ascii-art-guide" className="text-primary hover:underline font-medium">
+            Ultimate ASCII Art Guide
+          </a>.
+        </p>
       </div>
 
       <div className="flex flex-col md:flex-row gap-4 mb-8">
