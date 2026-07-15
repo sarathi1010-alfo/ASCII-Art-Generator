@@ -61,13 +61,22 @@ export default function TemplatePage() {
           Our Discord templates are designed to give you a head start. Combine them with the raw power of our client-side generator to produce stunning results in seconds. Optimize your visual identity for one of the world&apos;s most popular community platforms.
         </p>
 
-        <h2>How to Optimize ASCII Art for Discord</h2>
+        <h2>Mastering the Discord Image-to-ASCII Workflow</h2>
+        <p>
+          Discord presents unique challenges for ASCII art due to its variable message widths and the difference between mobile and desktop rendering. To ensure your images look crisp, we recommend using a lower resolution than you would for a full-screen terminal. A width of 45-55 characters is usually the &quot;sweet spot&quot; that prevents ugly line-wrapping on most smartphones.
+        </p>
         <ol>
           <li>Upload your image to the <strong><Link href="/image-to-ascii">Image To Ascii</Link></strong> tool.</li>
           <li>Set the width to approximately 50 characters to ensure it fits on mobile and desktop screens.</li>
-          <li>Increase the contrast to help the art stand out against Discord&apos;s dark or light themes.</li>
-          <li>Click the &apos;Discord&apos; copy button to automatically wrap your art in the correct code block syntax.</li>
+          <li>Increase the contrast (aim for 120-140%) to help the art stand out against Discord&apos;s dark or light themes.</li>
+          <li>Choose between the &apos;Standard&apos; engine for classic looks or &apos;Braille&apos; for high-detail representations that work surprisingly well in Discord code blocks.</li>
+          <li>Click the &apos;Discord&apos; copy button to automatically wrap your art in the correct triple-backtick (```) syntax.</li>
         </ol>
+
+        <h2>Creative Uses for Discord ASCII Templates</h2>
+        <p>
+          Beyond simple chat messages, you can use these templates to create unique server icons (by taking a screenshot of your ASCII art), stylized rule headers for your #rules channel, or personalized &quot;About Me&quot; sections for your Discord profile. The key is to experiment with different character sets to see which ones pop best against the Discord UI.
+        </p>
 
         <h2>Frequently Asked Questions</h2>
         <div className="grid gap-6 mt-6">
