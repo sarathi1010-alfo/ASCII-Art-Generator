@@ -61,13 +61,22 @@ export default function TemplatePage() {
           Our Scary templates are designed to give you a head start. Combine them with the raw power of our client-side generator to produce stunning results in seconds. Create hauntingly beautiful text art for your gaming profiles, horror-themed projects, or seasonal events.
         </p>
 
-        <h2>How to Create Scary ASCII Art</h2>
+        <h2>How to Create Scary ASCII Art Effects</h2>
+        <p>
+          The secret to truly scary ASCII art lies in distortion and unconventional character choices. While fonts like &quot;Ghost&quot; provide a great baseline, you can enhance the effect by mixing in &quot;Zalgo&quot; text elements or using symbols like &apos;†&apos;, &apos;‡&apos;, and &apos;☠&apos; within your manual edits.
+        </p>
         <ol>
-          <li>Choose a template that matches the vibe of your project.</li>
+          <li>Choose a template that matches the vibe of your project (e.g., graveyard themes or glitch aesthetics).</li>
           <li>Load it into the <strong><Link href="/text-to-ascii">Text To Ascii</Link></strong> tool.</li>
-          <li>Experiment with the &apos;Ghost&apos; or &apos;Doom&apos; fonts to enhance the eerie effect.</li>
-          <li>Copy and share your creation with your community!</li>
+          <li>Experiment with the &apos;Ghost&apos; or &apos;Doom&apos; fonts—the former for an eerie floaty feel, the latter for a heavy, oppressive look.</li>
+          <li>Use the &quot;Zalgo&quot; intensity slider if available to add chaotic vertical artifacts to your text.</li>
+          <li>Copy and share your haunting creation with your community!</li>
         </ol>
+
+        <h2>When to Use Eerie Designs</h2>
+        <p>
+          These templates aren&apos;t just for Halloween. They are perfect for dark-themed portfolio sites, horror game development documentation, and creating a unique atmosphere in private Discord servers or dark-web style terminal interfaces.
+        </p>
 
         <h2>Frequently Asked Questions</h2>
         <div className="grid gap-6 mt-6">
