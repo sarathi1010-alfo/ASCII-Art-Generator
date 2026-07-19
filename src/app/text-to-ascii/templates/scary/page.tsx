@@ -73,6 +73,14 @@ export default function TemplatePage() {
           <li>Copy and share your haunting creation with your community!</li>
         </ol>
 
+        <h2>Advanced Customization Tutorial</h2>
+        <p>
+          To make your scary ASCII text stand out even more, you can manually combine these elements with Zalgo text (glitch text) to create a truly unsettling, corrupted feel. Generate your base header here, and then sprinkle in corrupted characters.
+        </p>
+        <p>
+          Furthermore, try using a dark background color in your terminal or Discord server to maximize the contrast of the scary ASCII text. If you want to learn more about how text graphics work, you should check out our <Link href="/blog/ascii-art-guide">ultimate guide to creating ASCII art</Link>.
+        </p>
+
         <h2>When to Use Eerie Designs</h2>
         <p>
           These templates aren&apos;t just for Halloween. They are perfect for dark-themed portfolio sites, horror game development documentation, and creating a unique atmosphere in private Discord servers or dark-web style terminal interfaces.

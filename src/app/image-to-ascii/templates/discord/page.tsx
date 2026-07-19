@@ -73,6 +73,14 @@ export default function TemplatePage() {
           <li>Click the &apos;Discord&apos; copy button to automatically wrap your art in the correct triple-backtick (```) syntax.</li>
         </ol>
 
+        <h2>Advanced Customization Tutorial</h2>
+        <p>
+          For those who want to truly impress their server, consider mastering ANSI color codes. Discord now supports basic ANSI colors within specific code block types. By exporting your image as ANSI (using our advanced options), you can paste colored ASCII art directly into your chats!
+        </p>
+        <p>
+          Just remember that colored ASCII requires the `ansi` tag at the start of your code block, like so: <code>```ansi</code>. For a deep dive into how algorithms calculate these values and how to get the most out of your image conversions, read our <Link href="/blog/ascii-art-guide">comprehensive guide to creating ASCII art from images and text</Link>.
+        </p>
+
         <h2>Creative Uses for Discord ASCII Templates</h2>
         <p>
           Beyond simple chat messages, you can use these templates to create unique server icons (by taking a screenshot of your ASCII art), stylized rule headers for your #rules channel, or personalized &quot;About Me&quot; sections for your Discord profile. The key is to experiment with different character sets to see which ones pop best against the Discord UI.

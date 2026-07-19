@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Copy, Check, Search } from "lucide-react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import Link from "next/link";
 
 export default function GalleryPage() {
   const [search, setSearch] = useState("");
@@ -31,7 +32,7 @@ export default function GalleryPage() {
     <div className="container mx-auto py-8 px-4 max-w-6xl">
       <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight mb-2">ASCII Art Gallery</h1>
-        <p className="text-muted-foreground">Discover, copy, and share popular ASCII art creations.</p>
+        <p className="text-muted-foreground">Discover, copy, and share popular ASCII art creations. Want to learn how to make your own? Check out our guide on <Link href="/blog/ascii-art-guide" className="underline">how to create ASCII art from images and text</Link>.</p>
       </div>
 
       <div className="flex flex-col md:flex-row gap-4 mb-8">
