@@ -73,9 +73,17 @@ export default function TemplatePage() {
           <li>Copy the final result and paste it into your GitHub README or terminal welcome message.</li>
         </ol>
 
+        <h2>Advanced Customization Tutorial</h2>
+        <p>
+          To make your ASCII text truly unique, try combining multiple font styles within the same document. Start by generating your main header using a bold, wide font like &quot;Big&quot; or &quot;Colossal&quot;. Then, use a smaller, more legible font like &quot;Standard&quot; or &quot;Mini&quot; for subheadings.
+        </p>
+        <p>
+          Another technique is to manually add decorative elements around the generated text. For instance, enclosing your ASCII banner in a border of asterisks (*) or hash symbols (#) can give it a polished, finished appearance that fits perfectly into a code file block comment. Check out our comprehensive guide on <Link href="/blog/ascii-art-guide">how to create ASCII art from images and text</Link> for more advanced techniques!
+        </p>
+
         <h2>Why These Designs Stand Out</h2>
         <p>
-          A &quot;cool&quot; ASCII design isn&apos;t just about the font; it&apos;s about the spatial composition. By using templates that incorporate negative space and varied character densities (like using dots for shading and slashes for hard edges), you create a sophisticated look that transcends basic text banners.
+          A &quot;cool&quot; ASCII design isn&apos;t just about the font; it&apos;s about the spatial composition. By using templates that incorporate negative space and varied character densities (like using dots for shading and slashes for hard edges), you create a sophisticated look that transcends basic text banners. The contrast between thick and thin characters makes the text pop and draws the viewer&apos;s eye directly to the message.
         </p>
 
         <h2>Frequently Asked Questions</h2>

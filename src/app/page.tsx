@@ -97,6 +97,10 @@ export default function Home() {
           Unlike AI chatbots that struggle with precise spatial layout, our dedicated tools give you
           instant visual iteration, live previews, and robust download options. Best of all, everything runs locally in your browser.
         </p>
+        <h2>About ASCII Art</h2>
+        <p>
+          Curious about how this all works behind the scenes? Learn the history, manual techniques, and modern automated methods in our comprehensive guide on <Link href="/blog/ascii-art-guide">how to create ASCII art from images and text</Link>.
+        </p>
       </section>
     </div>
   );
