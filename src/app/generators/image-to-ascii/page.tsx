@@ -36,7 +36,7 @@ export default function ImageToAsciiGeneratorPage() {
       <JsonLd schema={buildFaqSchema(faqItems)} />
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-          Image to ASCII Generator
+          Image to ASCII Generator – Turn Photos into Text Art
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Transform your favorite photos into intricate text-based masterpieces.

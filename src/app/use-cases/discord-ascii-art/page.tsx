@@ -36,7 +36,7 @@ export default function DiscordUseCasePage() {
       <JsonLd schema={buildFaqSchema(faqItems)} />
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-          ASCII Art for Discord
+          How to Use ASCII Art in Discord – Stand Out in Chats
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Create perfectly formatted text art for your Discord servers and communities.

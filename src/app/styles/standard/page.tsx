@@ -36,7 +36,7 @@ export default function StandardStylePage() {
       <JsonLd schema={buildFaqSchema(faqItems)} />
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-          Standard ASCII Style
+          Standard ASCII Art Style – Clean, Classic, Versatile
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           The timeless, highly readable classic ASCII font.
