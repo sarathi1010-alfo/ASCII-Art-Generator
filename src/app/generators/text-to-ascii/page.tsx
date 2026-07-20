@@ -36,7 +36,7 @@ export default function TextToAsciiGeneratorPage() {
       <JsonLd schema={buildFaqSchema(faqItems)} />
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-          Text to ASCII Generator
+          Text to ASCII Generator – Convert Any Text into ASCII Art
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Convert your text into stunning, stylized ASCII art banners instantly.

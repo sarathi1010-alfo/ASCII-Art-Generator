@@ -36,7 +36,7 @@ export default function DoomStylePage() {
       <JsonLd schema={buildFaqSchema(faqItems)} />
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-          Doom ASCII Style
+          Doom ASCII Art Style – The Retro Gaming Aesthetic
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Bold, aggressive, and massive ASCII text generation.

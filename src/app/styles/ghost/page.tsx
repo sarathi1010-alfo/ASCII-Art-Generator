@@ -36,7 +36,7 @@ export default function GhostStylePage() {
       <JsonLd schema={buildFaqSchema(faqItems)} />
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-          Ghost ASCII Style
+          Ghost ASCII Art Style – Spooky, Light, and Fun
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Soft, bubbly, and playful ASCII text generation.

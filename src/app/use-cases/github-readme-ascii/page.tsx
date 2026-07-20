@@ -36,7 +36,7 @@ export default function GitHubUseCasePage() {
       <JsonLd schema={buildFaqSchema(faqItems)} />
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-          ASCII Art for GitHub READMEs
+          ASCII Art for GitHub READMEs – Make Your Profile Shine
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Make your repositories and developer profile stand out with unique text-based branding.
