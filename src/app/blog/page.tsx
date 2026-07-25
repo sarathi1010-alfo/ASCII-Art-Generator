@@ -48,18 +48,25 @@ export default function BlogIndexPage() {
           developer aiming to customize your terminal and GitHub READMEs, we
           have you covered. Our comprehensive guides, step-by-step tutorials,
           and deep dives into the history of digital text art are designed to
-          inspire and educate. Learn how to transform plain text and images into
-          stunning visual masterpieces using our powerful tools. We explore
-          manual techniques, automated conversions, and creative use cases
-          across various platforms like Discord and social media. Explore our{" "}
+          inspire and educate. You will learn how to transform plain text and
+          images into stunning visual masterpieces using our powerful tools. We
+          explore manual techniques, automated conversions, and creative use
+          cases across various platforms like Discord and social media. Our goal
+          is to empower your creativity with the best resources available on the
+          web. Explore our{" "}
           <Link href="/" className="text-primary hover:underline">
+            homepage
+          </Link>{" "}
+          to see more, open the{" "}
+          <Link href="/generator" className="text-primary hover:underline">
             generator
           </Link>{" "}
-          to start creating your own art, check out the{" "}
+          to start creating your own art, or check out the{" "}
           <Link href="/gallery" className="text-primary hover:underline">
             gallery
           </Link>{" "}
-          for inspiration, and let our guides fuel your creativity.
+          for inspiration, and let our detailed guides fuel your digital
+          creativity every single day.
         </p>
       </div>
 
@@ -121,6 +128,7 @@ export default function BlogIndexPage() {
             </ul>
           </div>
 
+
           <div>
             <h3 className="text-xl font-semibold mb-2">Comparisons</h3>
             <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
@@ -156,7 +164,7 @@ export default function BlogIndexPage() {
               </li>
               <li>
                 <Link
-                  href="/use-cases/github-readme-art"
+                  href="/use-cases/github-readme-ascii"
                   className="hover:text-primary transition-colors"
                 >
                   ASCII Art for GitHub READMEs
