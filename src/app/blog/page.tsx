@@ -134,7 +134,7 @@ export default function BlogIndexPage() {
             <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
               <li>
                 <Link
-                  href="/asciiforge-vs-patorjk"
+                  href="/text-to-ascii/vs/patorjk"
                   className="hover:text-primary transition-colors"
                 >
                   AsciiForge vs Patorjk
@@ -178,7 +178,7 @@ export default function BlogIndexPage() {
             <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
               <li>
                 <Link
-                  href="/standard-font-deep-dive"
+                  href="/styles/standard"
                   className="hover:text-primary transition-colors"
                 >
                   Standard Font Deep-Dive
@@ -186,7 +186,7 @@ export default function BlogIndexPage() {
               </li>
               <li>
                 <Link
-                  href="/ghost-font-deep-dive"
+                  href="/styles/ghost"
                   className="hover:text-primary transition-colors"
                 >
                   Ghost Font Deep-Dive
