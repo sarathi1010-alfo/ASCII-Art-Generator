@@ -51,9 +51,8 @@ export default function BlogIndexPage() {
           inspire and educate. You will learn how to transform plain text and
           images into stunning visual masterpieces using our powerful tools. We
           explore manual techniques, automated conversions, and creative use
-          cases across various platforms like Discord and social media. Our goal
-          is to empower your creativity with the best resources available on the
-          web. Explore our{" "}
+          cases across various platforms. Our goal is to empower your creativity
+          with the best resources available on the web. Explore our{" "}
           <Link href="/" className="text-primary hover:underline">
             homepage
           </Link>{" "}
@@ -65,13 +64,12 @@ export default function BlogIndexPage() {
           <Link href="/gallery" className="text-primary hover:underline">
             gallery
           </Link>{" "}
-          for inspiration, and let our detailed guides fuel your digital
-          creativity every single day.
+          for inspiration.
         </p>
       </div>
 
       <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4">Week 1 Featured Content</h2>
+        <h2 className="text-2xl font-bold mb-4">Categories</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
@@ -123,29 +121,6 @@ export default function BlogIndexPage() {
                   className="hover:text-primary transition-colors"
                 >
                   What is the Ghost Font?
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Comparisons</h3>
-            <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
-              <li>
-                <Link
-                  href="/text-to-ascii/vs/patorjk"
-                  className="hover:text-primary transition-colors"
-                >
-                  AsciiForge vs Patorjk
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/asciiforge-vs-textkool"
-                  className="hover:text-primary transition-colors"
-                >
-                  AsciiForge vs TextKool
                 </Link>
               </li>
             </ul>
@@ -204,6 +179,28 @@ export default function BlogIndexPage() {
                   className="hover:text-primary transition-colors"
                 >
                   Explore All Themed Collections
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Comparisons</h3>
+            <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+              <li>
+                <Link
+                  href="/text-to-ascii/vs/patorjk"
+                  className="hover:text-primary transition-colors"
+                >
+                  AsciiForge vs Patorjk
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/text-to-ascii/vs/textkool"
+                  className="hover:text-primary transition-colors"
+                >
+                  AsciiForge vs TextKool
                 </Link>
               </li>
             </ul>
