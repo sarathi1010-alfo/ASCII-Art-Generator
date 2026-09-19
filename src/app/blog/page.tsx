@@ -42,17 +42,7 @@ export default function BlogIndexPage() {
           ASCIIForge Blog – ASCII Art Guides, Tutorials & Inspiration
         </h1>
         <p className="text-muted-foreground mb-4">
-          Welcome to the ASCIIForge Blog, your ultimate destination for
-          everything related to ASCII art. Whether you are a curious beginner
-          looking to understand the basics of character encoding or a seasoned
-          developer aiming to customize your terminal and GitHub READMEs, we
-          have you covered. Our comprehensive guides, step-by-step tutorials,
-          and deep dives into the history of digital text art are designed to
-          inspire and educate. You will learn how to transform plain text and
-          images into stunning visual masterpieces using our powerful tools. We
-          explore manual techniques, automated conversions, and creative use
-          cases across various platforms. Our goal is to empower your creativity
-          with the best resources available on the web. Explore our{" "}
+          Welcome to the ASCIIForge Blog, your ultimate destination for everything related to ASCII art! Whether you are a curious beginner looking to understand the basics of character encoding, or a seasoned developer aiming to customize your terminal and GitHub READMEs, we have you covered. Our comprehensive guides, step-by-step tutorials, and deep dives into the history of digital text art are designed to inspire, educate, and elevate your projects. You will learn exactly how to transform plain text and images into stunning visual masterpieces using our powerful, free tools. We explore manual techniques, automated conversions, and highly creative use cases across various platforms like Discord and Reddit. Our core goal is to empower your creativity with the absolute best text-art resources available anywhere on the web. Explore our{" "}
           <Link href="/" className="text-primary hover:underline">
             homepage
           </Link>{" "}
@@ -60,11 +50,11 @@ export default function BlogIndexPage() {
           <Link href="/generator" className="text-primary hover:underline">
             generator
           </Link>{" "}
-          to start creating your own art, or check out the{" "}
+          to start creating your own art right now, or check out our massive{" "}
           <Link href="/gallery" className="text-primary hover:underline">
             gallery
           </Link>{" "}
-          for inspiration.
+          for instant inspiration and ready-to-use copy-paste examples.
         </p>
       </div>
 
