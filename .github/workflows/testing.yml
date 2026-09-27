@@ -71,11 +71,11 @@ jobs:
 
           for f in $(git diff --name-only HEAD~1 HEAD); do
             url="https://example.com/${f%.md}"
-            curl -s -X POST \
+            curl -s -f -X POST \
               -H "Authorization: Bearer $ACCESS_TOKEN" \
               -H "Content-Type: application/json" \
               -d "{\"url\": \"$url\", \"type\": \"URL_UPDATED\"}" \
-              "https://indexing.googleapis.com/v3/urlNotifications:publish"
+              "https://indexing.googleapis.com/v3/urlNotifications:publish" || true
           done
 
       - name: Resolve default branch and PR base
@@ -152,11 +152,11 @@ jobs:
 
           for f in $(git diff --name-only HEAD~1 HEAD); do
             url="https://example.com/${f%.md}"
-            curl -s -X POST \
+            curl -s -f -X POST \
               -H "Authorization: Bearer $ACCESS_TOKEN" \
               -H "Content-Type: application/json" \
               -d "{\"url\": \"$url\", \"type\": \"URL_UPDATED\"}" \
-              "https://indexing.googleapis.com/v3/urlNotifications:publish"
+              "https://indexing.googleapis.com/v3/urlNotifications:publish" || true
           done
 
   # ── Force-merge existing PRs one by one, ascending PR number ──
@@ -178,7 +178,7 @@ jobs:
 
           # Look up this repo's Jules "source" name once (format varies, so ask the API
           # rather than guessing the string -- per Jules docs' own recommended flow).
-          sources_resp=$(curl -s "https://jules.googleapis.com/v1alpha/sources?pageSize=100" \
+          sources_resp=$(curl -s -f "https://jules.googleapis.com/v1alpha/sources?pageSize=100" \
             -H "X-Goog-Api-Key: $JULES_API_KEY")
           echo "Jules sources response: $sources_resp"
           source_name=$(echo "$sources_resp" | jq -r --arg o "$owner" --arg r "$repo" \
@@ -212,7 +212,7 @@ jobs:
               echo "PR #$pr has conflicts -> requesting Jules to resolve"
               headref=$(gh pr view "$pr" --repo "$GITHUB_REPOSITORY" --json headRefName --jq .headRefName)
 
-              create_resp=$(curl -s -X POST "https://jules.googleapis.com/v1alpha/sessions" \
+              create_resp=$(curl -s -f -X POST "https://jules.googleapis.com/v1alpha/sessions" \
                 -H "X-Goog-Api-Key: $JULES_API_KEY" \
                 -H "Content-Type: application/json" \
                 -d "{
@@ -232,7 +232,7 @@ jobs:
               else
                 state=""
                 for i in $(seq 1 30); do
-                  poll_resp=$(curl -s "https://jules.googleapis.com/v1alpha/${session_name}" \
+                  poll_resp=$(curl -s -f "https://jules.googleapis.com/v1alpha/${session_name}" \
                     -H "X-Goog-Api-Key: $JULES_API_KEY")
                   state=$(echo "$poll_resp" | jq -r '.state // empty')
                   echo "  poll $i: $state"
@@ -249,7 +249,7 @@ jobs:
                   # Jules doesn't push back to the branch itself -- pull the patch out of
                   # the session's activities and apply/push it ourselves. This is the
                   # "accept and continue to corresponding files" step.
-                  activities=$(curl -s "https://jules.googleapis.com/v1alpha/${session_name}/activities?pageSize=50" \
+                  activities=$(curl -s -f "https://jules.googleapis.com/v1alpha/${session_name}/activities?pageSize=50" \
                     -H "X-Goog-Api-Key: $JULES_API_KEY")
                   patch=$(echo "$activities" | jq -r \
                     '[.activities[]? | select(.artifacts != null) | .artifacts[] | select(.changeSet != null) | .changeSet.gitPatch.unidiffPatch] | last // empty')
