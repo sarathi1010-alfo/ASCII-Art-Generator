@@ -75,7 +75,7 @@ jobs:
               -H "Authorization: Bearer $ACCESS_TOKEN" \
               -H "Content-Type: application/json" \
               -d "{\"url\": \"$url\", \"type\": \"URL_UPDATED\"}" \
-              "https://indexing.googleapis.com/v3/urlNotifications:publish"
+              "https://indexing.googleapis.com/v3/urlNotifications:publish" || true
           done
 
       - name: Resolve default branch and PR base
@@ -156,7 +156,7 @@ jobs:
               -H "Authorization: Bearer $ACCESS_TOKEN" \
               -H "Content-Type: application/json" \
               -d "{\"url\": \"$url\", \"type\": \"URL_UPDATED\"}" \
-              "https://indexing.googleapis.com/v3/urlNotifications:publish"
+              "https://indexing.googleapis.com/v3/urlNotifications:publish" || true
           done
 
   # ── Force-merge existing PRs one by one, ascending PR number ──
