@@ -18,8 +18,9 @@ export const metadata = resolveMetadata(
 
 export default function BlogIndexPage() {
   const postFilePaths = fs
-    .readdirSync(POSTS_PATH)
-    .filter((path) => /\.mdx?$/.test(path));
+    .existsSync(POSTS_PATH)
+    ? fs.readdirSync(POSTS_PATH).filter((path) => /\.mdx?$/.test(path))
+    : [];
 
   const posts = postFilePaths
     .map((filePath) => {
@@ -200,21 +201,25 @@ export default function BlogIndexPage() {
 
       <div>
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
-        <div className="grid gap-6">
-          {posts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <Card className="p-6 hover:border-primary/50 transition-colors cursor-pointer group">
-                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
-                  {post.title}
-                </h3>
-                <time className="text-xs text-muted-foreground block mt-1 mb-3">
-                  {new Date(post.date).toLocaleDateString()}
-                </time>
-                <p className="text-muted-foreground">{post.excerpt}</p>
-              </Card>
-            </Link>
-          ))}
-        </div>
+        {posts.length > 0 ? (
+          <div className="grid gap-6">
+            {posts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`}>
+                <Card className="p-6 hover:border-primary/50 transition-colors cursor-pointer group">
+                  <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
+                    {post.title}
+                  </h3>
+                  <time className="text-xs text-muted-foreground block mt-1 mb-3">
+                    {new Date(post.date).toLocaleDateString()}
+                  </time>
+                  <p className="text-muted-foreground">{post.excerpt}</p>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="text-muted-foreground">No posts yet. Check back soon!</p>
+        )}
       </div>
     </div>
   );
