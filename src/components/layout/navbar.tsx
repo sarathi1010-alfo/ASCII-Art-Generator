@@ -25,7 +25,7 @@ export function Navbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <DropdownMenuItem>
-                  <a href="https://qrgenerator.alfo.online" target="_blank" rel="noopener noreferrer">QR Generator</a>
+                  <a href="https://qr.alfo.online" target="_blank" rel="noopener noreferrer">QR Generator</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <a href="https://resumeforge.alfo.online" target="_blank" rel="noopener noreferrer">Resume Forge</a>
@@ -34,10 +34,7 @@ export function Navbar() {
                   <a href="https://paletteflow.alfo.online" target="_blank" rel="noopener noreferrer">Palette Flow</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <a href="https://pdfutility.app" target="_blank" rel="noopener noreferrer">PDF Utility</a>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <a href="https://hub.alfo.online" target="_blank" rel="noopener noreferrer" className="font-bold text-primary">All Tools Hub</a>
+                  <Link href="/tools" className="font-bold text-primary">All Tools</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
