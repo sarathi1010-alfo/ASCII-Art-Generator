@@ -45,6 +45,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${jetBrainsMono.variable} antialiased min-h-screen bg-background font-sans`}
       >
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -54,7 +57,7 @@ export default function RootLayout({
           <TooltipProvider>
             <div className="relative flex min-h-screen flex-col">
               <Navbar />
-              <main className="flex-1">{children}</main>
+              <main id="main-content" className="flex-1">{children}</main>
               <Footer />
             </div>
           </TooltipProvider>
