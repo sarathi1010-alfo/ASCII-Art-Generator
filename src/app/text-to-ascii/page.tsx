@@ -14,6 +14,7 @@ import { PopularTools } from "@/components/widgets/popular-tools";
 import { useAsciiHistory, HistoryItem } from "@/lib/hooks/useAsciiHistory";
 import { HistorySidebar } from "@/components/widgets/history-sidebar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { trackEvent } from "@/lib/gtag";
 
 export default function TextToAsciiPage() {
   const [text, setText] = useState("ASCII Gen");
@@ -33,6 +34,7 @@ export default function TextToAsciiPage() {
 
         if (result !== lastGeneratedRef.current && result.trim().length > 0 && deferredText.trim().length > 0) {
           lastGeneratedRef.current = result;
+          trackEvent('generate_ascii', { mode: 'text', font });
           addItem({
              type: 'text',
              data: deferredText,
@@ -62,6 +64,7 @@ export default function TextToAsciiPage() {
 
   const handleCopy = () => {
     if (asciiResult) {
+      trackEvent('copy_ascii', { mode: 'text' });
       navigator.clipboard.writeText(asciiResult);
     }
   };

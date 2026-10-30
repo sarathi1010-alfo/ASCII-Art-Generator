@@ -16,6 +16,7 @@ import { Switch } from "@/components/ui/switch";
 import { RelatedTools } from "@/components/widgets/related-tools";
 import { RecentTools } from "@/components/widgets/recent-tools";
 import { PopularTools } from "@/components/widgets/popular-tools";
+import { trackEvent } from "@/lib/gtag";
 
 export default function ImageToAsciiPage() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -83,6 +84,7 @@ export default function ImageToAsciiPage() {
         const result = await generateAsciiFromImage(imageUrl, options);
         if (isActive) {
           setAsciiResult(result);
+          trackEvent('generate_ascii', { mode: 'image', engine, density: densityKey });
         }
       } catch (err) {
         console.error("Failed to generate image ASCII", err);
@@ -102,6 +104,7 @@ export default function ImageToAsciiPage() {
 
   const handleCopy = useCallback(() => {
     if (asciiResult) {
+      trackEvent('copy_ascii', { mode: 'image', engine });
       // Strip ANSI escape codes when copying as standard text if the engine isn't ANSI
       const textToCopy = engine === "ansi-color"
         ? asciiResult.replace(/\x1b\[[0-9;]*m/g, '')
@@ -144,6 +147,7 @@ export default function ImageToAsciiPage() {
 
   const handleCopyDiscord = () => {
     if (asciiResult) {
+      trackEvent('copy_ascii', { mode: 'image', variant: 'discord' });
       const textToCopy = engine === "ansi-color"
         ? asciiResult.replace(/\x1b\[[0-9;]*m/g, '')
         : asciiResult;
@@ -153,6 +157,7 @@ export default function ImageToAsciiPage() {
 
   const handleCopyANSI = () => {
     if (asciiResult && engine === "ansi-color") {
+      trackEvent('copy_ascii', { mode: 'image', variant: 'ansi' });
       navigator.clipboard.writeText(asciiResult);
     }
   };
