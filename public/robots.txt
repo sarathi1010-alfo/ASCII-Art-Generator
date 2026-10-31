@@ -26,6 +26,14 @@ Disallow: /temp/
 Disallow: /private/
 Allow: /
 
+# AhrefsBot Unblocked
+User-agent: AhrefsBot
+Allow: /
+#                                                                           #
+#                                                                           #
+#                                                                           #
+
+
 User-agent: bingbot
 User-agent: msnbot
 User-agent: msnbot-media
@@ -338,7 +346,6 @@ Disallow: /
 ------------------------------------------------------------------------------
 AGGRESSIVE SECURITY SCRAPERS (BLOCKED)
 ------------------------------------------------------------------------------
-User-agent: AhrefsBot
 User-agent: SemrushBot
 User-agent: MajesticBot
 User-agent: rogerbot

@@ -35,10 +35,9 @@ export function Footer() {
         </div>
 
         <div className="space-y-4">
-          <h4 className="font-medium">Social</h4>
+          <h4 className="font-medium">Community</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="https://twitter.com/alfo_online" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Twitter / X</a></li>
-            <li><a href="https://github.com/alfo-online" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a></li>
+            <li><a href="https://github.com/sarathi1010-alfo" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a></li>
           </ul>
         </div>
       </div>
