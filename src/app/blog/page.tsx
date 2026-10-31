@@ -40,7 +40,7 @@ export default function BlogIndexPage() {
     <div className="container mx-auto py-8 px-4 max-w-4xl">
       <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight mb-4">
-          ASCIIForge Blog – ASCII Art Guides, Tutorials & Inspiration
+          ASCIIForge Blog – ASCII Art Guides, Tutorials &amp; Inspiration
         </h1>
         <p className="text-muted-foreground mb-4">
           Welcome to the ASCIIForge Blog, your ultimate destination for everything related to ASCII art! Whether you are a curious beginner looking to understand the basics of character encoding, or a seasoned developer aiming to customize your terminal and GitHub READMEs, we have you covered. Our comprehensive guides, step-by-step tutorials, and deep dives into the history of digital text art are designed to inspire, educate, and elevate your projects. You will learn exactly how to transform plain text and images into stunning visual masterpieces using our powerful, free tools. We explore manual techniques, automated conversions, and highly creative use cases across various platforms like Discord and Reddit. Our core goal is to empower your creativity with the absolute best text-art resources available anywhere on the web. Explore our{" "}
