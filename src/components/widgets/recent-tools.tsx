@@ -20,7 +20,7 @@ export function RecentTools() {
               <a
                 href={tool.url}
                 className="font-medium text-muted-foreground hover:text-foreground transition-colors"
-                {...(tool.url.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                {...(tool.url.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})}
               >
                 {tool.name}
               </a>

@@ -5,7 +5,7 @@ const POPULAR_TOOLS = [
   { name: "Image to ASCII", url: "/image-to-ascii" },
   { name: "Text to ASCII", url: "/text-to-ascii" },
   { name: "Resume Forge", url: "https://resumeforge.alfo.online" },
-  { name: "QR Generator", url: "https://qrgenerator.alfo.online" },
+  { name: "QR Generator", url: "https://qr.alfo.online" },
   { name: "PDF Utility", url: "https://pdfutility.app" },
   { name: "Palette Flow", url: "https://paletteflow.alfo.online" },
 ];
@@ -26,7 +26,7 @@ export function PopularTools() {
                 {tool.name}
               </Link>
             ) : (
-              <a href={tool.url} target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-primary transition-colors">
+              <a href={tool.url} target="_blank" rel="noopener" className="text-sm font-medium hover:text-primary transition-colors">
                 {tool.name}
               </a>
             )}

@@ -11,6 +11,7 @@ export function resolveMetadata(meta: SeoMeta, isHomepage = false): Metadata {
   const title = formatTitle(meta.title, isHomepage);
 
   return {
+    metadataBase: new URL('https://asciiforge.alfo.online'),
     title,
     description: meta.description,
     alternates: {

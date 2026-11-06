@@ -48,7 +48,7 @@ export default function BlogIndexPage() {
             homepage
           </Link>{" "}
           to see more, open the{" "}
-          <Link href="/generator" className="text-primary hover:underline">
+          <Link href="/ascii-art-generator" className="text-primary hover:underline">
             generator
           </Link>{" "}
           to start creating your own art right now, or check out our massive{" "}
@@ -84,15 +84,15 @@ export default function BlogIndexPage() {
               </li>
               <li>
                 <Link
-                  href="/what-is-a-figlet-font"
+                  href="/ansi-art-guide"
                   className="hover:text-primary transition-colors"
                 >
-                  What is a Figlet Font?
+                  ANSI & FIGlet Art Guide
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/how-does-text-to-ascii-work"
+                  href="/how-ascii-art-works"
                   className="hover:text-primary transition-colors"
                 >
                   How Does Text-to-ASCII Work?
@@ -100,18 +100,18 @@ export default function BlogIndexPage() {
               </li>
               <li>
                 <Link
-                  href="/what-is-the-standard-font"
+                  href="/styles/standard"
                   className="hover:text-primary transition-colors"
                 >
-                  What is the Standard Font?
+                  Standard Font Style
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/what-is-the-ghost-font"
+                  href="/styles/ghost"
                   className="hover:text-primary transition-colors"
                 >
-                  What is the Ghost Font?
+                  Ghost Font Style
                 </Link>
               </li>
             </ul>
@@ -188,10 +188,10 @@ export default function BlogIndexPage() {
               </li>
               <li>
                 <Link
-                  href="/text-to-ascii/vs/textkool"
+                  href="/image-to-ascii/vs/asciiart-eu"
                   className="hover:text-primary transition-colors"
                 >
-                  AsciiForge vs TextKool
+                  AsciiForge vs AsciiArt.eu
                 </Link>
               </li>
             </ul>

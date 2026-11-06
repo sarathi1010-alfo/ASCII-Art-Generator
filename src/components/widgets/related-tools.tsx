@@ -5,7 +5,7 @@ const RELATED_TOOLS = [
   {
     name: "QR Generator",
     description: "Create custom, trackable QR codes for links, text, and documents.",
-    url: "https://qrgenerator.alfo.online",
+    url: "https://qr.alfo.online",
   },
   {
     name: "Resume Forge",
@@ -37,7 +37,7 @@ export function RelatedTools() {
               key={tool.name}
               href={tool.url}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               className="block group"
             >
               <Card className="p-5 h-full transition-all hover:border-primary hover:shadow-md flex flex-col justify-between">

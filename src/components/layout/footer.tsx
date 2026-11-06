@@ -16,9 +16,9 @@ export function Footer() {
         <div className="space-y-4">
           <h4 className="font-medium">Tools Hub</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="https://qr.alfo.online" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors inline-flex items-center min-h-[44px]">QR Generator</a></li>
-            <li><a href="https://resumeforge.alfo.online" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors inline-flex items-center min-h-[44px]">Resume Forge</a></li>
-            <li><a href="https://paletteflow.alfo.online" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors inline-flex items-center min-h-[44px]">Palette Flow</a></li>
+            <li><a href="https://qr.alfo.online" target="_blank" rel="noopener" className="hover:text-foreground transition-colors inline-flex items-center min-h-[44px]">QR Generator</a></li>
+            <li><a href="https://resumeforge.alfo.online" target="_blank" rel="noopener" className="hover:text-foreground transition-colors inline-flex items-center min-h-[44px]">Resume Forge</a></li>
+            <li><a href="https://paletteflow.alfo.online" target="_blank" rel="noopener" className="hover:text-foreground transition-colors inline-flex items-center min-h-[44px]">Palette Flow</a></li>
             <li><Link href="/tools" className="hover:text-foreground transition-colors font-medium inline-flex items-center min-h-[44px]">All Tools &rarr;</Link></li>
           </ul>
         </div>
@@ -36,8 +36,8 @@ export function Footer() {
         <div className="space-y-4">
           <h4 className="font-medium">Social</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="https://alfo.online" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors inline-flex items-center min-h-[44px]">Alfo Online</a></li>
-            <li><a href="https://github.com/sarathi1010-alfo" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors inline-flex items-center min-h-[44px]">GitHub</a></li>
+            <li><a href="https://alfo.online" target="_blank" rel="noopener" className="hover:text-foreground transition-colors inline-flex items-center min-h-[44px]">Alfo Online</a></li>
+            <li><a href="https://github.com/sarathi1010-alfo" target="_blank" rel="noopener" className="hover:text-foreground transition-colors inline-flex items-center min-h-[44px]">GitHub</a></li>
           </ul>
         </div>
       </div>

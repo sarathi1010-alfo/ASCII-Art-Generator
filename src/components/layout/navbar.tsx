@@ -25,13 +25,13 @@ export function Navbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <DropdownMenuItem>
-                  <a href="https://qr.alfo.online" target="_blank" rel="noopener noreferrer">QR Generator</a>
+                  <a href="https://qr.alfo.online" target="_blank" rel="noopener">QR Generator</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <a href="https://resumeforge.alfo.online" target="_blank" rel="noopener noreferrer">Resume Forge</a>
+                  <a href="https://resumeforge.alfo.online" target="_blank" rel="noopener">Resume Forge</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <a href="https://paletteflow.alfo.online" target="_blank" rel="noopener noreferrer">Palette Flow</a>
+                  <a href="https://paletteflow.alfo.online" target="_blank" rel="noopener">Palette Flow</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Link href="/tools" className="font-bold text-primary">All Tools</Link>
@@ -57,7 +57,7 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <a href="https://alfo.online" target="_blank" rel="noopener noreferrer" className="hidden md:block text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href="https://alfo.online" target="_blank" rel="noopener" className="hidden md:block text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
             Powered by alfo.online
           </a>
           <Button

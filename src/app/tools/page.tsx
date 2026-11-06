@@ -22,7 +22,7 @@ const ECOSYSTEM_TOOLS = [
   {
     category: "Utilities",
     tools: [
-      { name: "QR Generator", url: "https://qrgenerator.alfo.online", desc: "Create custom QR codes.", icon: <QrCode className="h-5 w-5" /> },
+      { name: "QR Generator", url: "https://qr.alfo.online", desc: "Create custom QR codes.", icon: <QrCode className="h-5 w-5" /> },
       { name: "Pack Fit", url: "https://packfit.alfo.online", desc: "Luggage packing calculator.", icon: <Briefcase className="h-5 w-5" /> },
     ]
   }
@@ -43,7 +43,7 @@ export default function ToolsHubPage() {
       <div className="mb-12 text-center max-w-2xl mx-auto">
         <h1 className="text-4xl font-bold tracking-tight mb-4">All Free Tools</h1>
         <p className="text-xl text-muted-foreground">
-          Explore the complete <a href="https://alfo.online" target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:underline">alfo.online</a> ecosystem. Fast, secure, and purely client-side browser utilities.
+          Explore the complete <a href="https://alfo.online" target="_blank" rel="noopener" className="font-bold text-primary hover:underline">alfo.online</a> ecosystem. Fast, secure, and purely client-side browser utilities.
         </p>
       </div>
 
@@ -60,7 +60,7 @@ export default function ToolsHubPage() {
                   <CardWrapper
                     key={tool.name}
                     href={tool.url}
-                    {...(!isInternal && { target: "_blank", rel: "noopener noreferrer" })}
+                    {...(!isInternal && { target: "_blank", rel: "noopener" })}
                     className="block group h-full"
                   >
                     <Card className="p-5 h-full transition-all hover:border-primary hover:shadow-md flex flex-col items-start">

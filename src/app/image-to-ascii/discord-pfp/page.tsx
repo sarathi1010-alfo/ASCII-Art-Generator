@@ -57,7 +57,7 @@ export default function UseCasePage() {
           </div>
           <div>
             <h3 className="text-lg font-bold">Where can I find more tools?</h3>
-            <p>We are part of the <a href="https://hub.alfo.online" target="_blank" rel="noopener noreferrer">alfo.online ecosystem</a>. Check out the hub for more free web utilities.</p>
+            <p>We are part of the <a href="https://hub.alfo.online" target="_blank" rel="noopener">alfo.online ecosystem</a>. Check out the hub for more free web utilities.</p>
           </div>
         </div>
       </div>
