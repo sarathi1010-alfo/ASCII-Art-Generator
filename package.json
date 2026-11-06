@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "node scripts/validate-seo.js && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "node scripts/indexnow-ping.mjs",
+    "test": "playwright test"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",

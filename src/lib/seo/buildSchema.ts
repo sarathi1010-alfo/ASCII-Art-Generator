@@ -12,7 +12,7 @@ export function buildOrganizationSchema() {
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     sameAs: [
-      'https://twitter.com/alfo_online'
+      'https://github.com/sarathi1010-alfo'
     ]
   };
 }
